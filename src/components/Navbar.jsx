@@ -132,6 +132,9 @@ export default function Navbar() {
         .work-header, .pricing-header, .contact-header { padding-top: calc(var(--header-h) + 4rem) !important; }
       `}</style>
 
+      {/* Black safe-area cover — always on top, hides iPhone scroll leak */}
+      <div style={{ position:'fixed', top:0, left:0, right:0, height:'50px', background:'#08090d', zIndex:9999, pointerEvents:'none' }} />
+
       {/* Language bar */}
       <div className="lang-bar">
         <span>Bahasa / Language</span>
