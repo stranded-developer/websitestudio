@@ -64,6 +64,12 @@ export default function Navbar() {
           color: var(--text3);
           letter-spacing: .06em;
         }
+          .lang-bar {
+          padding-top: env(safe-area-inset-top);
+          height: calc(var(--lang-h) + env(safe-area-inset-top));
+        }
+
+        
         .lang-btn {
           background: none; border: none; cursor: pointer;
           font-size: .72rem; font-weight: 600; letter-spacing: .08em;
@@ -78,7 +84,7 @@ export default function Navbar() {
 
         #navbar {
           position: fixed;
-          top: var(--lang-h);
+          top: calc(var(--lang-h) + env(safe-area-inset-top));
           left: 0; right: 0;
           z-index: 1000;
           height: var(--nav-h);
@@ -88,6 +94,7 @@ export default function Navbar() {
           border-bottom: 1px solid var(--border2);
           transition: border-bottom-color .3s;
         }
+
         #navbar.scrolled { border-bottom-color: var(--border); }
 
         .desktop-nav { display: flex !important; }
@@ -131,9 +138,6 @@ export default function Navbar() {
         #home { padding-top: var(--header-h); min-height: 100dvh; }
         .work-header, .pricing-header, .contact-header { padding-top: calc(var(--header-h) + 4rem) !important; }
       `}</style>
-
-      {/* Black safe-area cover — always on top, hides iPhone scroll leak */}
-      <div style={{ position:'fixed', top:0, left:0, right:0, height:'50px', background:'#08090d', zIndex:9999, pointerEvents:'none' }} />
 
       {/* Language bar */}
       <div className="lang-bar">

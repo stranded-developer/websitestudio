@@ -19,7 +19,7 @@
   --whatsapp:      #25D366;
   --lang-h:        32px;
   --nav-h:         64px;
-  --header-h:      96px;
+  --header-h: calc(96px + env(safe-area-inset-top));
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
