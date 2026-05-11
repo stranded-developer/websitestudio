@@ -30,7 +30,7 @@ export default function Contact() {
   return (
     <>
       <style>{`
-        .contact-header { padding-top:4rem; padding-bottom:3rem; }
+        .contact-header { padding-top:calc(96px + env(safe-area-inset-top) + 4rem); padding-bottom:3rem; }
         .contact-layout { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
         .contact-info p { color:var(--text2); line-height:1.8; margin-bottom:2.5rem; }
         .contact-meta { display:flex; flex-direction:column; gap:1rem; margin-bottom:2.5rem; }

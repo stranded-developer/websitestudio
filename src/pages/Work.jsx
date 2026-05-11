@@ -55,7 +55,7 @@ export default function Work() {
   return (
     <>
       <style>{`
-        .work-header { padding-top:4rem; padding-bottom:3rem; }
+        .work-header { padding-top:calc(96px + env(safe-area-inset-top) + 4rem); padding-bottom:3rem; }
         .filter-bar { display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:3rem; }
         .filter-btn { padding:.45rem 1.1rem; border-radius:100px; border:1px solid var(--border2); background:transparent; color:var(--text2); font-size:.8rem; letter-spacing:.04em; text-transform:uppercase; transition:all .2s; cursor:pointer; font-family:'Plus Jakarta Sans',sans-serif; }
         .filter-btn:hover { border-color:var(--border); color:var(--text); }
