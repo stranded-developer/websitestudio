@@ -50,6 +50,7 @@ export default function Navbar() {
       <style>{`
         /* Lang bar: sits at very top, extends INTO safe area (notch/Dynamic Island) */
         .lang-bar {
+        isolation: isolate;
           position: fixed;
           top: 0; left: 0; right: 0;
           z-index: 1100;
@@ -87,17 +88,10 @@ export default function Navbar() {
 
         /* Navbar sits directly below lang-bar */
         #navbar {
-
-
-
-  transform: translateZ(0);
-  will-change: transform;
-
-
-  
-        isolation: isolate;
-
-  -webkit-backdrop-filter: none; /* kill any inherited blur */
+          transform: translateZ(0);
+          will-change: transform; 
+          isolation: isolate;
+          -webkit-backdrop-filter: none; /* kill any inherited blur */
           
           top: calc(32px + env(safe-area-inset-top));
           left: 0; right: 0;
@@ -107,9 +101,7 @@ export default function Navbar() {
           display: flex; align-items: center; justify-content: space-between;
           position: fixed;
   z-index: 999999;
-
   background: #08090d;
-
           border-bottom: 1px solid var(--border2);
           transition: border-bottom-color .3s;
           box-sizing: border-box;

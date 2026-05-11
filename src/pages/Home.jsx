@@ -68,9 +68,6 @@ export default function Home() {
   overflow:hidden;
 
   isolation:isolate;
-  transform:translateZ(0);
-
-  contain: layout paint;
 }
         .hero-bg {
   position:absolute;
@@ -81,6 +78,7 @@ export default function Home() {
   bottom:0;
 
   z-index:0;
+  isolation: isolate;
 
   overflow:hidden;
 }
