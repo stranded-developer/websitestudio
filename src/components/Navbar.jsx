@@ -53,7 +53,7 @@ export default function Navbar() {
           top: 0; left: 0; right: 0;
           z-index: 1100;
           height: var(--lang-h);
-          background: rgba(8,9,13,1);
+          background: #08090d;
           border-bottom: 1px solid var(--border2);
           display: flex;
           align-items: center;
@@ -64,7 +64,6 @@ export default function Navbar() {
           color: var(--text3);
           letter-spacing: .06em;
         }
-        .lang-bar span { color: var(--text3); }
         .lang-btn {
           background: none; border: none; cursor: pointer;
           font-size: .72rem; font-weight: 600; letter-spacing: .08em;
@@ -85,16 +84,11 @@ export default function Navbar() {
           height: var(--nav-h);
           padding: 0 2rem;
           display: flex; align-items: center; justify-content: space-between;
-          /* Always solid — prevents any content bleed-through on iOS */
-          background: rgba(8,9,13,.97);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
+          background: #08090d;
           border-bottom: 1px solid var(--border2);
-          transition: border-color .3s;
+          transition: border-bottom-color .3s;
         }
-        #navbar.scrolled {
-          border-bottom-color: var(--border);
-        }
+        #navbar.scrolled { border-bottom-color: var(--border); }
 
         .desktop-nav { display: flex !important; }
         .desktop-only { display: inline-flex !important; }
@@ -108,35 +102,32 @@ export default function Navbar() {
           #navbar { padding: 0 1.25rem; }
         }
 
+        /* Mobile menu — drops DOWN, no slide animation, fully opaque like the working site */
         .mobile-menu {
           position: fixed;
           top: var(--header-h);
           left: 0; right: 0;
           z-index: 998;
-          background: rgba(8,9,13,1);
-          backdrop-filter: blur(32px);
-          -webkit-backdrop-filter: blur(32px);
+          background: #08090d;
           border-bottom: 1px solid var(--border);
           padding: 1rem 1.5rem 2rem;
-          display: flex; flex-direction: column; gap: 0;
-          transform: translateY(-110%);
-          transition: transform .4s cubic-bezier(.23,1,.32,1);
+          display: none;
+          flex-direction: column;
+          gap: 0;
           max-height: calc(100dvh - var(--header-h));
           overflow-y: auto;
         }
-        .mobile-menu.open { transform: translateY(0); }
+        .mobile-menu.open { display: flex; }
         .mobile-menu a {
           display: flex; align-items: center; justify-content: space-between;
           padding: 1rem 0;
           border-bottom: 1px solid var(--border2);
           font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 600;
-          color: var(--text2); transition: color .2s, padding-left .2s; letter-spacing: -.01em;
-          text-decoration: none;
+          color: var(--text2); letter-spacing: -.01em;
+          text-decoration: none; transition: color .2s;
         }
-        .mobile-menu a:last-of-type { border-bottom: none; }
-        .mobile-menu a:hover { color: var(--text); padding-left: .4rem; }
+        .mobile-menu a:hover { color: var(--text); }
 
-        /* Hero section compensates for body padding-top */
         #home { margin-top: calc(-1 * var(--header-h)); padding-top: var(--header-h); min-height: 100dvh; }
         .work-header, .pricing-header, .contact-header { padding-top: 4rem !important; }
       `}</style>
@@ -174,9 +165,9 @@ export default function Navbar() {
 
           {/* Hamburger */}
           <button onClick={toggleMenu} aria-label="Toggle menu" aria-expanded={menuOpen} className="hamburger-btn" style={{ flexDirection: 'column', justifyContent: 'center', gap: '5px', width: '36px', height: '36px', cursor: 'pointer', zIndex: 1010, position: 'relative', borderRadius: '8px', padding: '6px', border: '1px solid var(--border2)', background: 'var(--surface)' }}>
-            <span style={{ display: 'block', height: '2px', background: 'var(--text)', borderRadius: '2px', width: '100%', transition: 'transform .35s cubic-bezier(.23,1,.32,1), opacity .25s', transform: menuOpen ? 'translateY(7px) rotate(45deg)' : 'none' }} />
-            <span style={{ display: 'block', height: '2px', background: 'var(--text)', borderRadius: '2px', transition: 'opacity .25s, width .25s', opacity: menuOpen ? 0 : 1, width: menuOpen ? '0' : '75%' }} />
-            <span style={{ display: 'block', height: '2px', background: 'var(--text)', borderRadius: '2px', width: '100%', transition: 'transform .35s cubic-bezier(.23,1,.32,1)', transform: menuOpen ? 'translateY(-7px) rotate(-45deg)' : 'none' }} />
+            <span style={{ display: 'block', height: '2px', background: 'var(--text)', borderRadius: '2px', width: '100%', transition: 'transform .25s', transform: menuOpen ? 'translateY(7px) rotate(45deg)' : 'none' }} />
+            <span style={{ display: 'block', height: '2px', background: 'var(--text)', borderRadius: '2px', width: '75%', transition: 'opacity .25s', opacity: menuOpen ? 0 : 1 }} />
+            <span style={{ display: 'block', height: '2px', background: 'var(--text)', borderRadius: '2px', width: '100%', transition: 'transform .25s', transform: menuOpen ? 'translateY(-7px) rotate(-45deg)' : 'none' }} />
           </button>
         </div>
       </nav>
