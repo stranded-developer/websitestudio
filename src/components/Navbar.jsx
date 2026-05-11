@@ -87,6 +87,14 @@ export default function Navbar() {
 
         /* Navbar sits directly below lang-bar */
         #navbar {
+
+
+
+  transform: translateZ(0);
+  will-change: transform;
+
+
+  
         isolation: isolate;
 
   -webkit-backdrop-filter: none; /* kill any inherited blur */
@@ -98,8 +106,7 @@ export default function Navbar() {
           padding: 0 2rem;
           display: flex; align-items: center; justify-content: space-between;
           background: rgba(8,9,13,.92);
--webkit-backdrop-filter: blur(14px);
-backdrop-filter: blur(14px);
+
           border-bottom: 1px solid var(--border2);
           transition: border-bottom-color .3s;
           box-sizing: border-box;
