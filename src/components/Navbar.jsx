@@ -93,11 +93,13 @@ export default function Navbar() {
           position: fixed;
           top: calc(32px + env(safe-area-inset-top));
           left: 0; right: 0;
-          z-index: 1000;
+          z-index: 99999;
           height: 64px;
           padding: 0 2rem;
           display: flex; align-items: center; justify-content: space-between;
-          background: #08090d;
+          background: rgba(8,9,13,.92);
+-webkit-backdrop-filter: blur(14px);
+backdrop-filter: blur(14px);
           border-bottom: 1px solid var(--border2);
           transition: border-bottom-color .3s;
           box-sizing: border-box;
