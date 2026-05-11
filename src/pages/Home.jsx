@@ -57,8 +57,8 @@ export default function Home() {
     <>
       <style>{`
        #home {
-  position:relative;
-  min-height:100dvh;
+  position: relative;
+  min-height: 100dvh;
 
   display:flex;
   flex-direction:column;
@@ -69,6 +69,8 @@ export default function Home() {
 
   isolation:isolate;
   transform:translateZ(0);
+
+  contain: layout paint;
 }
         .hero-bg {
   position:absolute;
@@ -85,7 +87,12 @@ export default function Home() {
   height:100%;
 
   z-index:0;
-  transform: translateZ(0);
+
+  transform:translateZ(0);
+
+  pointer-events:none;
+
+  contain:strict;
 }
         .hero-orb { position:absolute; width:780px; height:780px; border-radius:50%; background:radial-gradient(circle,rgba(124,92,191,.2) 0%,transparent 68%); top:50%; left:50%; transform:translate(-50%,-62%); pointer-events:none; animation:orbPulse 7s ease-in-out infinite; }
         @keyframes orbPulse { 0%,100%{transform:translate(-50%,-62%) scale(1);opacity:.7} 50%{transform:translate(-50%,-62%) scale(1.1);opacity:1} }
