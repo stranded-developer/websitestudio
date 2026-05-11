@@ -48,53 +48,57 @@ export default function Navbar() {
   return (
     <>
       <style>{`
+        /* Lang bar: sits at very top, extends INTO safe area (notch/Dynamic Island) */
         .lang-bar {
           position: fixed;
           top: 0; left: 0; right: 0;
           z-index: 1100;
-          height: var(--lang-h);
+          /* Height = base 32px + safe area (notch height) */
+          height: calc(32px + env(safe-area-inset-top));
+          /* Push content DOWN below the notch */
+          padding-top: env(safe-area-inset-top);
+          padding-left: 2rem;
+          padding-right: 2rem;
           background: #08090d;
           border-bottom: 1px solid var(--border2);
           display: flex;
-          align-items: center;
+          align-items: flex-end;
           justify-content: flex-end;
-          padding: 0 2rem;
           gap: .5rem;
           font-size: .72rem;
           color: var(--text3);
           letter-spacing: .06em;
-        }
-          .lang-bar {
-          padding-top: env(safe-area-inset-top);
-          height: calc(var(--lang-h) + env(safe-area-inset-top));
+          padding-bottom: 4px;
+          box-sizing: border-box;
         }
 
-        
         .lang-btn {
           background: none; border: none; cursor: pointer;
           font-size: .72rem; font-weight: 600; letter-spacing: .08em;
           padding: .2rem .5rem; border-radius: 4px;
           transition: color .2s, background .2s;
           font-family: 'Plus Jakarta Sans', sans-serif;
+          line-height: 1;
         }
         .lang-btn.active { color: var(--purple-light); background: var(--purple-glow2); }
         .lang-btn:not(.active) { color: var(--text3); }
         .lang-btn:not(.active):hover { color: var(--text2); }
-        .lang-sep { color: var(--border2); }
+        .lang-sep { color: var(--border2); line-height: 1; }
 
+        /* Navbar sits directly below lang-bar */
         #navbar {
           position: fixed;
-          top: calc(var(--lang-h) + env(safe-area-inset-top));
+          top: calc(32px + env(safe-area-inset-top));
           left: 0; right: 0;
           z-index: 1000;
-          height: var(--nav-h);
+          height: 64px;
           padding: 0 2rem;
           display: flex; align-items: center; justify-content: space-between;
           background: #08090d;
           border-bottom: 1px solid var(--border2);
           transition: border-bottom-color .3s;
+          box-sizing: border-box;
         }
-
         #navbar.scrolled { border-bottom-color: var(--border); }
 
         .desktop-nav { display: flex !important; }
@@ -105,14 +109,15 @@ export default function Navbar() {
           .desktop-nav { display: none !important; }
           .desktop-only { display: none !important; }
           .hamburger-btn { display: flex !important; }
-          .lang-bar { padding: 0 1.25rem; }
+          /* Keep padding-right/left for mobile, do NOT reset padding-top */
+          .lang-bar { padding-left: 1.25rem; padding-right: 1.25rem; }
           #navbar { padding: 0 1.25rem; }
         }
 
-        /* Mobile menu — drops DOWN, no slide animation, fully opaque like the working site */
+        /* Mobile menu drops below both bars */
         .mobile-menu {
           position: fixed;
-          top: var(--header-h);
+          top: calc(96px + env(safe-area-inset-top));
           left: 0; right: 0;
           z-index: 998;
           background: #08090d;
@@ -121,8 +126,9 @@ export default function Navbar() {
           display: none;
           flex-direction: column;
           gap: 0;
-          max-height: calc(100dvh - var(--header-h));
+          max-height: calc(100dvh - 96px - env(safe-area-inset-top));
           overflow-y: auto;
+          box-sizing: border-box;
         }
         .mobile-menu.open { display: flex; }
         .mobile-menu a {
@@ -135,26 +141,29 @@ export default function Navbar() {
         }
         .mobile-menu a:hover { color: var(--text); }
 
-        #home { padding-top: var(--header-h); min-height: 100dvh; }
-        .work-header, .pricing-header, .contact-header { padding-top: calc(var(--header-h) + 4rem) !important; }
+        /* Page sections: padding-top = lang-bar + navbar + safe area */
+        #home {
+          padding-top: calc(96px + env(safe-area-inset-top));
+          min-height: 100dvh;
+        }
+        .work-header, .pricing-header, .contact-header {
+          padding-top: calc(96px + env(safe-area-inset-top) + 4rem) !important;
+        }
       `}</style>
 
-      {/* Language bar */}
       <div className="lang-bar">
-        <span>Bahasa / Language</span>
+        <span style={{ marginRight: 'auto' }}>Bahasa / Language</span>
         <span className="lang-sep">|</span>
         <button className={`lang-btn${lang === 'ID' ? ' active' : ''}`} onClick={() => setLang('ID')}>ID</button>
         <span className="lang-sep">/</span>
         <button className={`lang-btn${lang === 'EN' ? ' active' : ''}`} onClick={() => setLang('EN')}>EN</button>
       </div>
 
-      {/* Main navbar */}
       <nav id="navbar" className={scrolled ? 'scrolled' : ''}>
         <Link to="/" style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.05rem', fontWeight: 700, letterSpacing: '-.02em', zIndex: 1001, position: 'relative', textDecoration: 'none', color: 'var(--text)' }}>
           website<span style={{ color: 'var(--purple-light)' }}>studio</span>.id
         </Link>
 
-        {/* Desktop pill */}
         <ul className="desktop-nav" style={{ gap: 0, position: 'absolute', left: '50%', transform: 'translateX(-50%)', background: 'rgba(255,255,255,.04)', border: '1px solid var(--border2)', borderRadius: '100px', padding: '.25rem', listStyle: 'none' }}>
           {navLinks.map(([path, label]) => (
             <li key={path}>
@@ -169,8 +178,6 @@ export default function Navbar() {
           <Link to="/contact" className="desktop-only" style={{ background: 'var(--purple)', color: '#fff', padding: '.5rem 1.2rem', borderRadius: '100px', fontSize: '.8rem', fontWeight: 500, transition: 'background .2s', textDecoration: 'none' }}>
             {t.nav.quote}
           </Link>
-
-          {/* Hamburger */}
           <button onClick={toggleMenu} aria-label="Toggle menu" aria-expanded={menuOpen} className="hamburger-btn" style={{ flexDirection: 'column', justifyContent: 'center', gap: '5px', width: '36px', height: '36px', cursor: 'pointer', zIndex: 1010, position: 'relative', borderRadius: '8px', padding: '6px', border: '1px solid var(--border2)', background: 'var(--surface)' }}>
             <span style={{ display: 'block', height: '2px', background: 'var(--text)', borderRadius: '2px', width: '100%', transition: 'transform .25s', transform: menuOpen ? 'translateY(7px) rotate(45deg)' : 'none' }} />
             <span style={{ display: 'block', height: '2px', background: 'var(--text)', borderRadius: '2px', width: '75%', transition: 'opacity .25s', opacity: menuOpen ? 0 : 1 }} />
@@ -179,7 +186,6 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile dropdown */}
       <div className={`mobile-menu${menuOpen ? ' open' : ''}`}>
         {mobileLinks.map(([href, label]) => (
           <a key={label} href={href} onClick={() => { setMenuOpen(false); document.body.style.overflow = '' }}>
