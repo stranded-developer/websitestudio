@@ -48,11 +48,12 @@ export default function Navbar() {
   return (
     <>
       <style>{`
+        /* Lang bar: anchored to top:0, padding-top pushes content below notch,
+           background fills the notch area — exactly like PokeJoe's approach */
         .lang-bar {
           position: fixed;
           top: 0; left: 0; right: 0;
           z-index: 1100;
-          height: calc(32px + env(safe-area-inset-top));
           padding-top: env(safe-area-inset-top);
           padding-left: 2rem;
           padding-right: 2rem;
@@ -67,6 +68,8 @@ export default function Navbar() {
           color: var(--text3);
           letter-spacing: .06em;
           box-sizing: border-box;
+          /* height is driven by padding, not fixed — grows with safe area */
+          min-height: calc(32px + env(safe-area-inset-top));
         }
 
         .lang-btn {
@@ -82,6 +85,7 @@ export default function Navbar() {
         .lang-btn:not(.active):hover { color: var(--text2); }
         .lang-sep { color: var(--border2); line-height: 1; }
 
+        /* Navbar sits directly below lang-bar */
         #navbar {
           position: fixed;
           top: calc(32px + env(safe-area-inset-top));
