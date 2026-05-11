@@ -155,9 +155,23 @@ export default function Navbar() {
 
         /* Page sections: padding-top = lang-bar + navbar + safe area */
         #home {
-          padding-top: calc(96px + env(safe-area-inset-top));
-          min-height: 100dvh;
-        }
+  position: relative;
+
+  min-height: calc(100dvh - 96px - env(safe-area-inset-top));
+
+  margin-top: calc(96px + env(safe-area-inset-top));
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  overflow:hidden;
+
+  isolation:isolate;
+
+  background:#08090d;
+}
         .work-header, .pricing-header, .contact-header {
           padding-top: calc(96px + env(safe-area-inset-top) + 4rem) !important;
         }
