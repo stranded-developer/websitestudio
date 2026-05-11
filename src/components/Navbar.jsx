@@ -7,8 +7,16 @@ const WA_NUMBER = '6281234567890'
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [isIOS, setIsIOS] = useState(false)
   const location = useLocation()
   const { lang, setLang, t } = useLang()
+
+  useEffect(() => {
+    const ios =
+      /iP(hone|od|ad)/.test(navigator.userAgent) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
+    setIsIOS(ios)
+  }, [])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30)
@@ -48,20 +56,6 @@ export default function Navbar() {
   return (
     <>
       <style>{`
-        /* iOS Safari only — covers bleed-through above lang-bar when scrolling */
-        .ios-safe-cover { display: none; }
-        @supports (-webkit-touch-callout: none) {
-          .ios-safe-cover {
-            display: block;
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 1200;
-            height: env(safe-area-inset-top);
-            background: #08090d;
-            pointer-events: none;
-          }
-        }
-
         /* Lang bar: sits at very top, extends INTO safe area (notch/Dynamic Island) */
         .lang-bar {
           position: fixed;
@@ -162,8 +156,21 @@ export default function Navbar() {
         }
       `}</style>
 
-      {/* iOS Safari only — blocks bleed-through in notch/Dynamic Island area */}
-      <div className="ios-safe-cover" />
+      {/* iOS-only black cover — blocks content bleed into notch/Dynamic Island on Safari scroll */}
+      {isIOS && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: 'env(safe-area-inset-top)',
+            background: '#08090d',
+            zIndex: 1200,
+            pointerEvents: 'none',
+          }}
+        />
+      )}
 
       <div className="lang-bar">
         <span style={{ marginRight: 'auto' }}>Bahasa / Language</span>
@@ -211,7 +218,7 @@ export default function Navbar() {
             {t.nav.quote}
           </Link>
           <a href={`https://wa.me/${WA_NUMBER}?text=Hi%20websitestudio.id!`} target="_blank" rel="noopener noreferrer" style={{ display: 'block', textAlign: 'center', padding: '.9rem', borderRadius: '12px', fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: '.95rem', fontWeight: 600, background: 'var(--whatsapp)', color: '#fff', textDecoration: 'none' }}>
-            💬 WhatsAppm
+            💬 WhatsApp
           </a>
         </div>
       </div>
