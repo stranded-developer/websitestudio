@@ -139,13 +139,7 @@ export default function Navbar() {
         }
         .mobile-menu a:hover { color: var(--text); }
 
-        #home {
-          padding-top: calc(96px + env(safe-area-inset-top));
-          min-height: 100dvh;
-        }
-        .work-header, .pricing-header, .contact-header {
-          padding-top: calc(96px + env(safe-area-inset-top) + 4rem) !important;
-        }
+        
       `}</style>
 
       <div className="lang-bar">
