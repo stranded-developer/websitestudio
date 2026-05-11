@@ -1,0 +1,241 @@
+import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
+import useReveal from '../components/useReveal'
+
+const WA_NUMBER = '6281234567890'
+
+const WHY_CARDS = [
+  { icon: '⚡', title: 'Delivered Fast', desc: 'Landing pages in 3–5 days. Full sites in 7–14 days. We move quickly without cutting corners.' },
+  { icon: '🎨', title: 'Truly Custom', desc: 'Zero templates. Every site is designed from a blank canvas, built specifically for your brand.' },
+  { icon: '📈', title: 'Built to Convert', desc: 'Beautiful isn\'t enough. We optimize every layout, CTA, and flow for real business results.' },
+  { icon: '🛠', title: 'Full-Stack Team', desc: 'Design, frontend, backend, SEO — all under one roof. One point of contact, end-to-end.' },
+  { icon: '💬', title: 'Always Reachable', desc: 'Chat with us directly on WhatsApp. No ticket queues, no waiting days for a reply.' },
+  { icon: '🔒', title: '30-Day Support', desc: 'Every project includes post-launch support. We\'re with you even after the site goes live.' },
+]
+
+const TESTIMONIALS = [
+  { stars: '★★★★★', quote: '"Our website transformed how clients see us. Leads doubled within the first month of launch."', initials: 'AR', name: 'Adi Ramadhan', role: 'CEO, PT Karya Maju' },
+  { stars: '★★★★★', quote: '"Delivered in 5 days and it looked better than I ever imagined. The animations are stunning!"', initials: 'SR', name: 'Sari Rahayu', role: 'Owner, Sari Boutique' },
+  { stars: '★★★★★', quote: '"Professional and creative. They understood our brand from the first call. Highly recommend!"', initials: 'BP', name: 'Bima Pratama', role: 'Founder, BuildFast Agency' },
+  { stars: '★★★★★', quote: '"Investors were blown away by our site before we even started pitching. Best investment ever."', initials: 'DW', name: 'Dinda Wijaya', role: 'Co-founder, Fintech ID' },
+  { stars: '★★★★★', quote: '"The booking system saves us 3 hours per day. Every rupiah was worth it. Luar biasa!"', initials: 'RN', name: 'Rico Nugroho', role: 'Owner, Warung Rico' },
+  { stars: '★★★★★', quote: '"Design quality on par with agencies that charge 10× more. Brief to launch in one week flat."', initials: 'LH', name: 'Linda Halim', role: 'Marketing Dir., Griya Property' },
+]
+
+const MARQUEE_ITEMS = ['Landing Pages','E-commerce Stores','Company Profiles','SaaS Platforms','Booking Systems','Restaurant Sites','Real Estate Portals','Portfolio Sites','Event Pages','Digital Marketing']
+
+export default function Home() {
+  useReveal()
+  const canvasRef = useRef(null)
+
+  useEffect(() => {
+    const pc = canvasRef.current
+    if (!pc) return
+    const pctx = pc.getContext('2d')
+    let animId
+
+    const resize = () => { pc.width = window.innerWidth; pc.height = window.innerHeight }
+    resize()
+    window.addEventListener('resize', resize, { passive: true })
+
+    const particles = Array.from({ length: 70 }, () => ({
+      x: Math.random() * pc.width, y: Math.random() * pc.height,
+      r: Math.random() * 1.4 + 0.3,
+      vx: (Math.random() - 0.5) * 0.25, vy: (Math.random() - 0.5) * 0.25,
+      alpha: Math.random() * 0.4 + 0.06,
+    }))
+
+    const anim = () => {
+      pctx.clearRect(0, 0, pc.width, pc.height)
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy
+        if (p.x < 0) p.x = pc.width
+        if (p.x > pc.width) p.x = 0
+        if (p.y < 0) p.y = pc.height
+        if (p.y > pc.height) p.y = 0
+        pctx.beginPath()
+        pctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
+        pctx.fillStyle = `rgba(160,126,224,${p.alpha})`
+        pctx.fill()
+      })
+      animId = requestAnimationFrame(anim)
+    }
+    anim()
+    return () => { cancelAnimationFrame(animId); window.removeEventListener('resize', resize) }
+  }, [])
+
+  const marqueeItems = [...MARQUEE_ITEMS, ...MARQUEE_ITEMS]
+  const testiItems = [...TESTIMONIALS, ...TESTIMONIALS]
+
+  return (
+    <>
+      <style>{`
+        #home { position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; padding-top:var(--nav-h); }
+        .hero-bg { position:absolute; inset:0; z-index:0; }
+        #particleCanvas { position:absolute; inset:0; width:100%; height:100%; }
+        .hero-orb { position:absolute; width:780px; height:780px; border-radius:50%; background:radial-gradient(circle,rgba(124,92,191,.2) 0%,transparent 68%); top:50%; left:50%; transform:translate(-50%,-62%); pointer-events:none; animation:orbPulse 7s ease-in-out infinite; }
+        @keyframes orbPulse { 0%,100%{transform:translate(-50%,-62%) scale(1);opacity:.7} 50%{transform:translate(-50%,-62%) scale(1.1);opacity:1} }
+        .mesh-overlay { position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(124,92,191,.07) 0%,transparent 70%); pointer-events:none; z-index:1; }
+        .hero-content { position:relative; z-index:2; text-align:center; padding:0 1.5rem; max-width:880px; width:100%; }
+        .hero-badge { display:inline-flex; align-items:center; gap:.5rem; background:rgba(124,92,191,.1); border:1px solid var(--border); border-radius:100px; padding:.38rem 1rem; font-size:.74rem; color:var(--purple-light); letter-spacing:.08em; text-transform:uppercase; margin-bottom:2rem; animation:fadeUp .8s ease .2s both; font-weight:600; }
+        .hero-badge-dot { width:6px; height:6px; border-radius:50%; background:var(--purple-light); animation:blink 2s infinite; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+        h1.hero-title { font-family:'Outfit',sans-serif; font-size:clamp(2.6rem,7vw,6rem); font-weight:800; line-height:1.0; letter-spacing:-.04em; margin-bottom:1.5rem; animation:fadeUp .8s ease .4s both; }
+        .hero-title .line { display:block; }
+        .hero-title .outline { color:transparent; -webkit-text-stroke:1.5px var(--purple-light); }
+        .hero-sub { font-size:clamp(.95rem,1.8vw,1.1rem); color:var(--text2); max-width:520px; margin:0 auto 2.5rem; line-height:1.8; animation:fadeUp .8s ease .6s both; }
+        .hero-actions { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; animation:fadeUp .8s ease .8s both; }
+        .hero-stats { display:flex; gap:3rem; justify-content:center; margin-top:4rem; padding-top:2.5rem; border-top:1px solid var(--border2); animation:fadeUp .8s ease 1s both; flex-wrap:wrap; }
+        .stat-item { text-align:center; }
+        .stat-num { font-family:'Outfit',sans-serif; font-size:2.1rem; font-weight:800; line-height:1; letter-spacing:-.03em; }
+        .stat-num em { color:var(--purple-light); font-style:normal; }
+        .stat-label { font-size:.72rem; color:var(--text3); letter-spacing:.08em; text-transform:uppercase; margin-top:.3rem; }
+        @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+        .scroll-hint { position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:.5rem; animation:fadeUp 1s ease 1.6s both; }
+        .scroll-hint span { font-size:.68rem; color:var(--text3); letter-spacing:.1em; text-transform:uppercase; }
+        .scroll-line { width:1px; height:44px; background:linear-gradient(to bottom,var(--purple),transparent); animation:scrollAnim 2.2s ease-in-out infinite; }
+        @keyframes scrollAnim { 0%{transform:scaleY(0);transform-origin:top} 49%{transform:scaleY(1);transform-origin:top} 51%{transform:scaleY(1);transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom} }
+        .marquee-section { padding:3rem 0; border-top:1px solid var(--border2); border-bottom:1px solid var(--border2); overflow:hidden; }
+        .marquee-track { display:flex; gap:3rem; width:max-content; animation:marquee 22s linear infinite; }
+        .marquee-item { display:flex; align-items:center; gap:.8rem; white-space:nowrap; font-family:'Outfit',sans-serif; font-size:1.2rem; font-weight:700; color:var(--text3); letter-spacing:-.01em; }
+        .marquee-dot { width:5px; height:5px; border-radius:50%; background:var(--purple); flex-shrink:0; }
+        .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+        .about-title { font-family:'Outfit',sans-serif; font-size:clamp(1.8rem,3.5vw,2.9rem); font-weight:800; letter-spacing:-.03em; line-height:1.12; }
+        .about-title .accent { color:var(--purple-light); }
+        .about-body { display:flex; flex-direction:column; gap:1.4rem; }
+        .about-body p { color:var(--text2); line-height:1.8; font-size:1rem; }
+        .feature-pills { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.5rem; }
+        .pill { background:rgba(124,92,191,.1); border:1px solid var(--border); border-radius:100px; padding:.3rem .9rem; font-size:.76rem; color:var(--purple-light); letter-spacing:.03em; font-weight:500; }
+        .why-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-top:4rem; }
+        .why-card { background:var(--surface); border:1px solid var(--border2); border-radius:16px; padding:1.8rem; transition:border-color .3s,transform .3s; }
+        .why-card:hover { border-color:var(--border); transform:translateY(-4px); }
+        .why-icon { font-size:1.7rem; margin-bottom:1rem; }
+        .why-card h3 { font-family:'Outfit',sans-serif; font-size:1rem; font-weight:700; margin-bottom:.5rem; letter-spacing:-.01em; }
+        .why-card p { font-size:.875rem; color:var(--text2); line-height:1.65; }
+        .testi-card { background:var(--surface); border:1px solid var(--border2); border-radius:16px; padding:1.5rem; width:300px; flex-shrink:0; }
+        .testi-stars { color:var(--purple-light); font-size:.75rem; letter-spacing:3px; margin-bottom:.8rem; }
+        .testi-quote { font-size:.875rem; color:var(--text2); line-height:1.7; margin-bottom:1.2rem; font-style:italic; }
+        .testi-author { display:flex; align-items:center; gap:.75rem; }
+        .testi-avatar { width:34px; height:34px; border-radius:50%; background:var(--purple-glow); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-family:'Outfit',sans-serif; font-size:.75rem; font-weight:700; color:var(--purple-light); }
+        .testi-name { font-size:.85rem; font-weight:500; }
+        .testi-role { font-size:.75rem; color:var(--text3); }
+        @media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:2.5rem}.why-grid{grid-template-columns:1fr 1fr}}
+        @media(max-width:600px){.hero-stats{gap:1.5rem}.why-grid{grid-template-columns:1fr}.hero-actions{flex-direction:column;align-items:center}.hero-actions .btn-primary,.hero-actions .btn-ghost{width:100%;max-width:300px;justify-content:center}}
+      `}</style>
+
+      {/* HERO */}
+      <section id="home">
+        <div className="hero-bg">
+          <canvas ref={canvasRef} id="particleCanvas" />
+          <div className="hero-orb" />
+        </div>
+        <div className="mesh-overlay" />
+        <div className="hero-content">
+          <div className="hero-badge">
+            <span className="hero-badge-dot" />
+            🇮🇩 Indonesia's Premium Web Studio
+          </div>
+          <h1 className="hero-title">
+            <span className="line">We build websites</span>
+            <span className="line outline">that convert.</span>
+          </h1>
+          <p className="hero-sub">Stunning, interactive, blazing-fast websites that make your brand impossible to ignore. From concept to live — in days, not months.</p>
+          <div className="hero-actions">
+            <Link to="/work" className="btn-primary">See Our Work ↓</Link>
+            <a href={`https://wa.me/${WA_NUMBER}?text=Hi%20websitestudio.id!`} target="_blank" rel="noopener noreferrer" className="btn-ghost">💬 WhatsApp Us</a>
+          </div>
+          <div className="hero-stats">
+            {[['500+','Websites Delivered'],['98%','Client Satisfaction'],['3×','Avg. Conversion Lift'],['5★','Average Rating']].map(([num, label]) => (
+              <div key={label} className="stat-item">
+                <div className="stat-num">{num}</div>
+                <div className="stat-label">{label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="scroll-hint" aria-hidden="true">
+          <span>Scroll</span>
+          <div className="scroll-line" />
+        </div>
+      </section>
+
+      {/* MARQUEE */}
+      <div className="marquee-section">
+        <div className="marquee-track" aria-hidden="true">
+          {marqueeItems.map((item, i) => (
+            <span key={i} className="marquee-item"><span className="marquee-dot" />{item}</span>
+          ))}
+        </div>
+      </div>
+
+      {/* ABOUT */}
+      <section id="about">
+        <div className="page-section">
+          <div className="about-grid">
+            <div className="reveal">
+              <span className="section-label">About Us</span>
+              <h2 className="about-title">We don't just build websites.<br /><span className="accent">We build growth engines.</span></h2>
+            </div>
+            <div className="about-body reveal reveal-d1">
+              <p>websitestudio.id is a boutique web design studio based in Indonesia, crafting high-performance digital experiences for brands that want to stand out. Every pixel is intentional. Every interaction is designed to convert.</p>
+              <p>From sleek corporate profiles to complex e-commerce platforms — we handle everything from strategy and design to development and launch. Fast turnaround. Fair pricing. Exceptional results.</p>
+              <div className="feature-pills">
+                {['Custom Design','Mobile First','SEO Ready','Fast Load Times','CMS Integration','Scroll Animations','Analytics Setup','WhatsApp Widget'].map(p => (
+                  <span key={p} className="pill">{p}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="why-grid">
+            {WHY_CARDS.map((c, i) => (
+              <div key={c.title} className={`why-card reveal reveal-d${(i % 3) + 1}`}>
+                <div className="why-icon">{c.icon}</div>
+                <h3>{c.title}</h3>
+                <p>{c.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section id="testimonials" style={{ background: 'var(--bg2)', padding: '5rem 0', overflow: 'hidden' }}>
+        <div className="page-section" style={{ paddingBottom: '2rem' }}>
+          <span className="section-label" style={{ textAlign: 'center', display: 'block' }}>Testimonials</span>
+          <h2 className="section-title reveal" style={{ textAlign: 'center' }}>What clients say</h2>
+        </div>
+        <div style={{ overflow: 'hidden', padding: '1rem 0' }}>
+          <div style={{ display: 'flex', gap: '1.5rem', width: 'max-content', animation: 'marquee 32s linear infinite' }}>
+            {testiItems.map((t, i) => (
+              <div key={i} className="testi-card">
+                <div className="testi-stars">{t.stars}</div>
+                <p className="testi-quote">{t.quote}</p>
+                <div className="testi-author">
+                  <div className="testi-avatar">{t.initials}</div>
+                  <div>
+                    <div className="testi-name">{t.name}</div>
+                    <div className="testi-role">{t.role}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section style={{ padding: '5rem 1.5rem', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 60% 80% at 50% 50%,rgba(124,92,191,.1),transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'relative', zIndex: 1, maxWidth: '600px', margin: '0 auto' }}>
+          <span className="section-label reveal" style={{ display: 'block', textAlign: 'center' }}>Ready?</span>
+          <h2 className="section-title reveal" style={{ fontSize: 'clamp(1.8rem,5vw,3.5rem)' }}>Let's build something <span style={{ color: 'var(--purple-light)' }}>extraordinary.</span></h2>
+          <p className="section-sub reveal" style={{ margin: '0 auto 2rem', textAlign: 'center' }}>Drop us a message and we'll come back with a free strategy session and quote — usually within the hour.</p>
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }} className="reveal reveal-d1">
+            <Link to="/contact" className="btn-primary">Start a Project →</Link>
+            <Link to="/pricing" className="btn-ghost">View Pricing</Link>
+          </div>
+        </div>
+      </section>
+    </>
+  )
+}
