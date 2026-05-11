@@ -1,31 +1,24 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import useReveal from '../components/useReveal'
+import { useLang } from '../components/LangContext.jsx'
 
 const WA_NUMBER = '6281234567890'
 
-const WHY_CARDS = [
-  { icon: '⚡', title: 'Delivered Fast', desc: 'Landing pages in 3–5 days. Full sites in 7–14 days. We move quickly without cutting corners.' },
-  { icon: '🎨', title: 'Truly Custom', desc: 'Zero templates. Every site is designed from a blank canvas, built specifically for your brand.' },
-  { icon: '📈', title: 'Built to Convert', desc: 'Beautiful isn\'t enough. We optimize every layout, CTA, and flow for real business results.' },
-  { icon: '🛠', title: 'Full-Stack Team', desc: 'Design, frontend, backend, SEO — all under one roof. One point of contact, end-to-end.' },
-  { icon: '💬', title: 'Always Reachable', desc: 'Chat with us directly on WhatsApp. No ticket queues, no waiting days for a reply.' },
-  { icon: '🔒', title: '30-Day Support', desc: 'Every project includes post-launch support. We\'re with you even after the site goes live.' },
-]
-
 const TESTIMONIALS = [
-  { stars: '★★★★★', quote: '"Our website transformed how clients see us. Leads doubled within the first month of launch."', initials: 'AR', name: 'Adi Ramadhan', role: 'CEO, PT Karya Maju' },
-  { stars: '★★★★★', quote: '"Delivered in 5 days and it looked better than I ever imagined. The animations are stunning!"', initials: 'SR', name: 'Sari Rahayu', role: 'Owner, Sari Boutique' },
-  { stars: '★★★★★', quote: '"Professional and creative. They understood our brand from the first call. Highly recommend!"', initials: 'BP', name: 'Bima Pratama', role: 'Founder, BuildFast Agency' },
-  { stars: '★★★★★', quote: '"Investors were blown away by our site before we even started pitching. Best investment ever."', initials: 'DW', name: 'Dinda Wijaya', role: 'Co-founder, Fintech ID' },
-  { stars: '★★★★★', quote: '"The booking system saves us 3 hours per day. Every rupiah was worth it. Luar biasa!"', initials: 'RN', name: 'Rico Nugroho', role: 'Owner, Warung Rico' },
-  { stars: '★★★★★', quote: '"Design quality on par with agencies that charge 10× more. Brief to launch in one week flat."', initials: 'LH', name: 'Linda Halim', role: 'Marketing Dir., Griya Property' },
+  { stars:'★★★★★', quote:'"Our website transformed how clients see us. Leads doubled within the first month of launch."', initials:'AR', name:'Adi Ramadhan', role:'CEO, PT Karya Maju' },
+  { stars:'★★★★★', quote:'"Delivered in 5 days and it looked better than I ever imagined. The animations are stunning!"', initials:'SR', name:'Sari Rahayu', role:'Owner, Sari Boutique' },
+  { stars:'★★★★★', quote:'"Professional and creative. They understood our brand from the first call. Highly recommend!"', initials:'BP', name:'Bima Pratama', role:'Founder, BuildFast Agency' },
+  { stars:'★★★★★', quote:'"Investors were blown away by our site before we even started pitching. Best investment ever."', initials:'DW', name:'Dinda Wijaya', role:'Co-founder, Fintech ID' },
+  { stars:'★★★★★', quote:'"The booking system saves us 3 hours per day. Every rupiah was worth it. Luar biasa!"', initials:'RN', name:'Rico Nugroho', role:'Owner, Warung Rico' },
+  { stars:'★★★★★', quote:'"Design quality on par with agencies that charge 10× more. Brief to launch in one week flat."', initials:'LH', name:'Linda Halim', role:'Marketing Dir., Griya Property' },
 ]
 
 const MARQUEE_ITEMS = ['Landing Pages','E-commerce Stores','Company Profiles','SaaS Platforms','Booking Systems','Restaurant Sites','Real Estate Portals','Portfolio Sites','Event Pages','Digital Marketing']
 
 export default function Home() {
   useReveal()
+  const { t } = useLang()
   const canvasRef = useRef(null)
 
   useEffect(() => {
@@ -33,30 +26,23 @@ export default function Home() {
     if (!pc) return
     const pctx = pc.getContext('2d')
     let animId
-
     const resize = () => { pc.width = window.innerWidth; pc.height = window.innerHeight }
     resize()
     window.addEventListener('resize', resize, { passive: true })
-
     const particles = Array.from({ length: 70 }, () => ({
       x: Math.random() * pc.width, y: Math.random() * pc.height,
       r: Math.random() * 1.4 + 0.3,
       vx: (Math.random() - 0.5) * 0.25, vy: (Math.random() - 0.5) * 0.25,
       alpha: Math.random() * 0.4 + 0.06,
     }))
-
     const anim = () => {
       pctx.clearRect(0, 0, pc.width, pc.height)
       particles.forEach(p => {
         p.x += p.vx; p.y += p.vy
-        if (p.x < 0) p.x = pc.width
-        if (p.x > pc.width) p.x = 0
-        if (p.y < 0) p.y = pc.height
-        if (p.y > pc.height) p.y = 0
-        pctx.beginPath()
-        pctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
-        pctx.fillStyle = `rgba(160,126,224,${p.alpha})`
-        pctx.fill()
+        if (p.x < 0) p.x = pc.width; if (p.x > pc.width) p.x = 0
+        if (p.y < 0) p.y = pc.height; if (p.y > pc.height) p.y = 0
+        pctx.beginPath(); pctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
+        pctx.fillStyle = `rgba(160,126,224,${p.alpha})`; pctx.fill()
       })
       animId = requestAnimationFrame(anim)
     }
@@ -64,13 +50,13 @@ export default function Home() {
     return () => { cancelAnimationFrame(animId); window.removeEventListener('resize', resize) }
   }, [])
 
-  const marqueeItems = [...MARQUEE_ITEMS, ...MARQUEE_ITEMS]
   const testiItems = [...TESTIMONIALS, ...TESTIMONIALS]
+  const marqueeItems = [...MARQUEE_ITEMS, ...MARQUEE_ITEMS]
 
   return (
     <>
       <style>{`
-        #home { position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; padding-top:var(--nav-h); }
+        #home { position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; }
         .hero-bg { position:absolute; inset:0; z-index:0; }
         #particleCanvas { position:absolute; inset:0; width:100%; height:100%; }
         .hero-orb { position:absolute; width:780px; height:780px; border-radius:50%; background:radial-gradient(circle,rgba(124,92,191,.2) 0%,transparent 68%); top:50%; left:50%; transform:translate(-50%,-62%); pointer-events:none; animation:orbPulse 7s ease-in-out infinite; }
@@ -80,7 +66,7 @@ export default function Home() {
         .hero-badge { display:inline-flex; align-items:center; gap:.5rem; background:rgba(124,92,191,.1); border:1px solid var(--border); border-radius:100px; padding:.38rem 1rem; font-size:.74rem; color:var(--purple-light); letter-spacing:.08em; text-transform:uppercase; margin-bottom:2rem; animation:fadeUp .8s ease .2s both; font-weight:600; }
         .hero-badge-dot { width:6px; height:6px; border-radius:50%; background:var(--purple-light); animation:blink 2s infinite; }
         @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
-        h1.hero-title { font-family:'Outfit',sans-serif; font-size:clamp(2.6rem,7vw,6rem); font-weight:800; line-height:1.0; letter-spacing:-.04em; margin-bottom:1.5rem; animation:fadeUp .8s ease .4s both; }
+        h1.hero-title { font-family:'Outfit',sans-serif; font-size:clamp(2.4rem,6.5vw,5.8rem); font-weight:800; line-height:1.0; letter-spacing:-.04em; margin-bottom:1.5rem; animation:fadeUp .8s ease .4s both; }
         .hero-title .line { display:block; }
         .hero-title .outline { color:transparent; -webkit-text-stroke:1.5px var(--purple-light); }
         .hero-sub { font-size:clamp(.95rem,1.8vw,1.1rem); color:var(--text2); max-width:520px; margin:0 auto 2.5rem; line-height:1.8; animation:fadeUp .8s ease .6s both; }
@@ -123,7 +109,6 @@ export default function Home() {
         @media(max-width:600px){.hero-stats{gap:1.5rem}.why-grid{grid-template-columns:1fr}.hero-actions{flex-direction:column;align-items:center}.hero-actions .btn-primary,.hero-actions .btn-ghost{width:100%;max-width:300px;justify-content:center}}
       `}</style>
 
-      {/* HERO */}
       <section id="home">
         <div className="hero-bg">
           <canvas ref={canvasRef} id="particleCanvas" />
@@ -131,21 +116,18 @@ export default function Home() {
         </div>
         <div className="mesh-overlay" />
         <div className="hero-content">
-          <div className="hero-badge">
-            <span className="hero-badge-dot" />
-            🇮🇩 Indonesia's Premium Web Studio
-          </div>
+          <div className="hero-badge"><span className="hero-badge-dot" />{t.hero.badge}</div>
           <h1 className="hero-title">
-            <span className="line">We build websites</span>
-            <span className="line outline">that convert.</span>
+            <span className="line">{t.hero.title1}</span>
+            <span className="line outline">{t.hero.title2}</span>
           </h1>
-          <p className="hero-sub">Stunning, interactive, blazing-fast websites that make your brand impossible to ignore. From concept to live — in days, not months.</p>
+          <p className="hero-sub">{t.hero.sub}</p>
           <div className="hero-actions">
-            <Link to="/work" className="btn-primary">See Our Work ↓</Link>
-            <a href={`https://wa.me/${WA_NUMBER}?text=Hi%20websitestudio.id!`} target="_blank" rel="noopener noreferrer" className="btn-ghost">💬 WhatsApp Us</a>
+            <Link to="/work" className="btn-primary">{t.hero.cta1}</Link>
+            <a href={`https://wa.me/${WA_NUMBER}?text=Hi%20websitestudio.id!`} target="_blank" rel="noopener noreferrer" className="btn-ghost">{t.hero.cta2}</a>
           </div>
           <div className="hero-stats">
-            {[['500+','Websites Delivered'],['98%','Client Satisfaction'],['3×','Avg. Conversion Lift'],['5★','Average Rating']].map(([num, label]) => (
+            {t.hero.stats.map(([num, label]) => (
               <div key={label} className="stat-item">
                 <div className="stat-num">{num}</div>
                 <div className="stat-label">{label}</div>
@@ -154,12 +136,11 @@ export default function Home() {
           </div>
         </div>
         <div className="scroll-hint" aria-hidden="true">
-          <span>Scroll</span>
+          <span>{t.about.scroll}</span>
           <div className="scroll-line" />
         </div>
       </section>
 
-      {/* MARQUEE */}
       <div className="marquee-section">
         <div className="marquee-track" aria-hidden="true">
           {marqueeItems.map((item, i) => (
@@ -168,26 +149,23 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ABOUT */}
       <section id="about">
         <div className="page-section">
           <div className="about-grid">
             <div className="reveal">
-              <span className="section-label">About Us</span>
-              <h2 className="about-title">We don't just build websites.<br /><span className="accent">We build growth engines.</span></h2>
+              <span className="section-label">{t.about.label}</span>
+              <h2 className="about-title">{t.about.title1}<br /><span className="accent">{t.about.title2}</span></h2>
             </div>
             <div className="about-body reveal reveal-d1">
-              <p>websitestudio.id is a boutique web design studio based in Indonesia, crafting high-performance digital experiences for brands that want to stand out. Every pixel is intentional. Every interaction is designed to convert.</p>
-              <p>From sleek corporate profiles to complex e-commerce platforms — we handle everything from strategy and design to development and launch. Fast turnaround. Fair pricing. Exceptional results.</p>
+              <p>{t.about.p1}</p>
+              <p>{t.about.p2}</p>
               <div className="feature-pills">
-                {['Custom Design','Mobile First','SEO Ready','Fast Load Times','CMS Integration','Scroll Animations','Analytics Setup','WhatsApp Widget'].map(p => (
-                  <span key={p} className="pill">{p}</span>
-                ))}
+                {t.about.pills.map(p => <span key={p} className="pill">{p}</span>)}
               </div>
             </div>
           </div>
           <div className="why-grid">
-            {WHY_CARDS.map((c, i) => (
+            {t.about.why.map((c, i) => (
               <div key={c.title} className={`why-card reveal reveal-d${(i % 3) + 1}`}>
                 <div className="why-icon">{c.icon}</div>
                 <h3>{c.title}</h3>
@@ -198,24 +176,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section id="testimonials" style={{ background: 'var(--bg2)', padding: '5rem 0', overflow: 'hidden' }}>
-        <div className="page-section" style={{ paddingBottom: '2rem' }}>
-          <span className="section-label" style={{ textAlign: 'center', display: 'block' }}>Testimonials</span>
-          <h2 className="section-title reveal" style={{ textAlign: 'center' }}>What clients say</h2>
+      <section id="testimonials" style={{ background:'var(--bg2)', padding:'5rem 0', overflow:'hidden' }}>
+        <div className="page-section" style={{ paddingBottom:'2rem' }}>
+          <span className="section-label" style={{ textAlign:'center', display:'block' }}>{t.testi.label}</span>
+          <h2 className="section-title reveal" style={{ textAlign:'center' }}>{t.testi.title}</h2>
         </div>
-        <div style={{ overflow: 'hidden', padding: '1rem 0' }}>
-          <div style={{ display: 'flex', gap: '1.5rem', width: 'max-content', animation: 'marquee 32s linear infinite' }}>
-            {testiItems.map((t, i) => (
+        <div style={{ overflow:'hidden', padding:'1rem 0' }}>
+          <div style={{ display:'flex', gap:'1.5rem', width:'max-content', animation:'marquee 32s linear infinite' }}>
+            {testiItems.map((t2, i) => (
               <div key={i} className="testi-card">
-                <div className="testi-stars">{t.stars}</div>
-                <p className="testi-quote">{t.quote}</p>
+                <div className="testi-stars">{t2.stars}</div>
+                <p className="testi-quote">{t2.quote}</p>
                 <div className="testi-author">
-                  <div className="testi-avatar">{t.initials}</div>
-                  <div>
-                    <div className="testi-name">{t.name}</div>
-                    <div className="testi-role">{t.role}</div>
-                  </div>
+                  <div className="testi-avatar">{t2.initials}</div>
+                  <div><div className="testi-name">{t2.name}</div><div className="testi-role">{t2.role}</div></div>
                 </div>
               </div>
             ))}
@@ -223,16 +197,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section style={{ padding: '5rem 1.5rem', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 60% 80% at 50% 50%,rgba(124,92,191,.1),transparent 70%)', pointerEvents: 'none' }} />
-        <div style={{ position: 'relative', zIndex: 1, maxWidth: '600px', margin: '0 auto' }}>
-          <span className="section-label reveal" style={{ display: 'block', textAlign: 'center' }}>Ready?</span>
-          <h2 className="section-title reveal" style={{ fontSize: 'clamp(1.8rem,5vw,3.5rem)' }}>Let's build something <span style={{ color: 'var(--purple-light)' }}>extraordinary.</span></h2>
-          <p className="section-sub reveal" style={{ margin: '0 auto 2rem', textAlign: 'center' }}>Drop us a message and we'll come back with a free strategy session and quote — usually within the hour.</p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }} className="reveal reveal-d1">
-            <Link to="/contact" className="btn-primary">Start a Project →</Link>
-            <Link to="/pricing" className="btn-ghost">View Pricing</Link>
+      <section style={{ padding:'5rem 1.5rem', textAlign:'center', position:'relative', overflow:'hidden' }}>
+        <div style={{ position:'absolute', inset:0, background:'radial-gradient(ellipse 60% 80% at 50% 50%,rgba(124,92,191,.1),transparent 70%)', pointerEvents:'none' }} />
+        <div style={{ position:'relative', zIndex:1, maxWidth:'600px', margin:'0 auto' }}>
+          <span className="section-label reveal" style={{ display:'block', textAlign:'center' }}>{t.cta.label}</span>
+          <h2 className="section-title reveal" style={{ fontSize:'clamp(1.8rem,5vw,3.5rem)' }}>{t.cta.title1} <span style={{ color:'var(--purple-light)' }}>{t.cta.title2}</span></h2>
+          <p className="section-sub reveal" style={{ margin:'0 auto 2rem', textAlign:'center' }}>{t.cta.sub}</p>
+          <div style={{ display:'flex', gap:'1rem', justifyContent:'center', flexWrap:'wrap' }} className="reveal reveal-d1">
+            <Link to="/contact" className="btn-primary">{t.cta.btn1}</Link>
+            <Link to="/pricing" className="btn-ghost">{t.cta.btn2}</Link>
           </div>
         </div>
       </section>
