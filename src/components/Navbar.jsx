@@ -128,8 +128,8 @@ export default function Navbar() {
         }
         .mobile-menu a:hover { color: var(--text); }
 
-        #home { margin-top: calc(-1 * var(--header-h)); padding-top: var(--header-h); min-height: 100dvh; }
-        .work-header, .pricing-header, .contact-header { padding-top: 4rem !important; }
+        #home { padding-top: var(--header-h); min-height: 100dvh; }
+        .work-header, .pricing-header, .contact-header { padding-top: calc(var(--header-h) + 4rem) !important; }
       `}</style>
 
       {/* Language bar */}
