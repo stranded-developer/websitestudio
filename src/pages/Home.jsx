@@ -56,7 +56,7 @@ export default function Home() {
   return (
     <>
       <style>{`
-        #home { position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+        #home { position:relative; min-height:100dvh; display:flex; align-items:center; justify-content:center; overflow:hidden; padding-top:var(--header-h); }
         .hero-bg { position:absolute; inset:0; z-index:0; }
         #particleCanvas { position:absolute; inset:0; width:100%; height:100%; }
         .hero-orb { position:absolute; width:780px; height:780px; border-radius:50%; background:radial-gradient(circle,rgba(124,92,191,.2) 0%,transparent 68%); top:50%; left:50%; transform:translate(-50%,-62%); pointer-events:none; animation:orbPulse 7s ease-in-out infinite; }
