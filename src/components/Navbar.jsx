@@ -87,6 +87,9 @@ export default function Navbar() {
 
         /* Navbar sits directly below lang-bar */
         #navbar {
+        isolation: isolate;
+
+  -webkit-backdrop-filter: none; /* kill any inherited blur */
           position: fixed;
           top: calc(32px + env(safe-area-inset-top));
           left: 0; right: 0;
