@@ -48,13 +48,12 @@ export default function Navbar() {
   return (
     <>
       <style>{`
-        /* Language bar */
         .lang-bar {
           position: fixed;
           top: 0; left: 0; right: 0;
           z-index: 1100;
-          height: 32px;
-          background: rgba(8,9,13,.98);
+          height: var(--lang-h);
+          background: rgba(8,9,13,1);
           border-bottom: 1px solid var(--border2);
           display: flex;
           align-items: center;
@@ -64,8 +63,6 @@ export default function Navbar() {
           font-size: .72rem;
           color: var(--text3);
           letter-spacing: .06em;
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
         }
         .lang-bar span { color: var(--text3); }
         .lang-btn {
@@ -80,26 +77,23 @@ export default function Navbar() {
         .lang-btn:not(.active):hover { color: var(--text2); }
         .lang-sep { color: var(--border2); }
 
-        /* Navbar sits below lang bar */
         #navbar {
           position: fixed;
-          top: 32px; left: 0; right: 0;
+          top: var(--lang-h);
+          left: 0; right: 0;
           z-index: 1000;
           height: var(--nav-h);
           padding: 0 2rem;
           display: flex; align-items: center; justify-content: space-between;
-          transition: background .4s, border-bottom .4s, backdrop-filter .4s;
+          /* Always solid — prevents any content bleed-through on iOS */
+          background: rgba(8,9,13,.97);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border-bottom: 1px solid var(--border2);
+          transition: border-color .3s;
         }
         #navbar.scrolled {
-          background: rgba(8,9,13,.95);
-          backdrop-filter: blur(24px);
-          -webkit-backdrop-filter: blur(24px);
-          border-bottom: 1px solid var(--border);
-        }
-        #navbar:not(.scrolled) {
-          background: rgba(8,9,13,.85);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
+          border-bottom-color: var(--border);
         }
 
         .desktop-nav { display: flex !important; }
@@ -114,13 +108,12 @@ export default function Navbar() {
           #navbar { padding: 0 1.25rem; }
         }
 
-        /* Mobile menu */
         .mobile-menu {
           position: fixed;
-          top: calc(32px + var(--nav-h));
+          top: var(--header-h);
           left: 0; right: 0;
           z-index: 998;
-          background: rgba(8,9,13,.98);
+          background: rgba(8,9,13,1);
           backdrop-filter: blur(32px);
           -webkit-backdrop-filter: blur(32px);
           border-bottom: 1px solid var(--border);
@@ -128,7 +121,7 @@ export default function Navbar() {
           display: flex; flex-direction: column; gap: 0;
           transform: translateY(-110%);
           transition: transform .4s cubic-bezier(.23,1,.32,1);
-          max-height: calc(100vh - 32px - var(--nav-h));
+          max-height: calc(100dvh - var(--header-h));
           overflow-y: auto;
         }
         .mobile-menu.open { transform: translateY(0); }
@@ -143,9 +136,8 @@ export default function Navbar() {
         .mobile-menu a:last-of-type { border-bottom: none; }
         .mobile-menu a:hover { color: var(--text); padding-left: .4rem; }
 
-        /* Push page content down so it never hides under navbar */
-        body { padding-top: calc(32px + var(--nav-h)); }
-        #home { margin-top: calc(-32px - var(--nav-h)); padding-top: calc(32px + var(--nav-h)); }
+        /* Hero section compensates for body padding-top */
+        #home { margin-top: calc(-1 * var(--header-h)); padding-top: var(--header-h); min-height: 100dvh; }
         .work-header, .pricing-header, .contact-header { padding-top: 4rem !important; }
       `}</style>
 

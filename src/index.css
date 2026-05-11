@@ -17,7 +17,9 @@
   --text2:         rgba(240,238,255,0.55);
   --text3:         rgba(240,238,255,0.28);
   --whatsapp:      #25D366;
+  --lang-h:        32px;
   --nav-h:         64px;
+  --header-h:      calc(var(--lang-h) + var(--nav-h)); /* 96px total */
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,6 +31,8 @@ body {
   overflow-x: hidden;
   cursor: auto;
   line-height: 1.6;
+  /* Push all page content below the fixed lang-bar + navbar */
+  padding-top: var(--header-h);
 }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
