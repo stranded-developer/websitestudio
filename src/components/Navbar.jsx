@@ -7,16 +7,11 @@ const WA_NUMBER = '6281234567890'
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [isIOS, setIsIOS] = useState(false)
+  
   const location = useLocation()
   const { lang, setLang, t } = useLang()
 
-  useEffect(() => {
-    const ios =
-      /iP(hone|od|ad)/.test(navigator.userAgent) ||
-      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
-    setIsIOS(ios)
-  }, [])
+  
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30)
@@ -157,20 +152,20 @@ export default function Navbar() {
       `}</style>
 
       {/* iOS-only black cover — blocks content bleed into notch/Dynamic Island on Safari scroll */}
-      {isIOS && (
+      
         <div
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            height: 'env(safe-area-inset-top)',
-            background: '#08090d',
-            zIndex: 1200,
-            pointerEvents: 'none',
-          }}
-        />
-      )}
+  style={{
+    position: 'fixed',
+    top: '-200px',
+    left: 0,
+    right: 0,
+    height: 'calc(200px + env(safe-area-inset-top))',
+    background: '#08090d',
+    zIndex: 1200,
+    pointerEvents: 'none',
+  }}
+/>
+      
 
       <div className="lang-bar">
         <span style={{ marginRight: 'auto' }}>Bahasa / Language</span>
