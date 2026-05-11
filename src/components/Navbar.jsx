@@ -7,11 +7,8 @@ const WA_NUMBER = '6281234567890'
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  
   const location = useLocation()
   const { lang, setLang, t } = useLang()
-
-  
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30)
@@ -51,7 +48,6 @@ export default function Navbar() {
   return (
     <>
       <style>{`
-        /* Lang bar: sits at very top, extends INTO safe area (notch/Dynamic Island) */
         .lang-bar {
           position: fixed;
           top: 0; left: 0; right: 0;
@@ -60,6 +56,7 @@ export default function Navbar() {
           padding-top: env(safe-area-inset-top);
           padding-left: 2rem;
           padding-right: 2rem;
+          padding-bottom: 4px;
           background: #08090d;
           border-bottom: 1px solid var(--border2);
           display: flex;
@@ -69,16 +66,8 @@ export default function Navbar() {
           font-size: .72rem;
           color: var(--text3);
           letter-spacing: .06em;
-          padding-bottom: 4px;
           box-sizing: border-box;
         }
-          #home {
-  overflow: clip;
-}
-
-        html {
-  overflow-y: clip; /* not 'hidden' — clip doesn't affect scroll behavior */
-}
 
         .lang-btn {
           background: none; border: none; cursor: pointer;
@@ -93,7 +82,6 @@ export default function Navbar() {
         .lang-btn:not(.active):hover { color: var(--text2); }
         .lang-sep { color: var(--border2); line-height: 1; }
 
-        /* Navbar sits directly below lang-bar */
         #navbar {
           position: fixed;
           top: calc(32px + env(safe-area-inset-top));
@@ -121,7 +109,6 @@ export default function Navbar() {
           #navbar { padding: 0 1.25rem; }
         }
 
-        /* Mobile menu drops below both bars */
         .mobile-menu {
           position: fixed;
           top: calc(96px + env(safe-area-inset-top));
@@ -148,7 +135,6 @@ export default function Navbar() {
         }
         .mobile-menu a:hover { color: var(--text); }
 
-        /* Page sections: padding-top = lang-bar + navbar + safe area */
         #home {
           padding-top: calc(96px + env(safe-area-inset-top));
           min-height: 100dvh;
@@ -157,22 +143,6 @@ export default function Navbar() {
           padding-top: calc(96px + env(safe-area-inset-top) + 4rem) !important;
         }
       `}</style>
-
-      {/* iOS-only black cover — blocks content bleed into notch/Dynamic Island on Safari scroll */}
-      
-        <div
-  style={{
-    position: 'fixed',
-    top: '-200px',
-    left: 0,
-    right: 0,
-    height: 'calc(200px + env(safe-area-inset-top))',
-    background: '#08090d',
-    zIndex: 1200,
-    pointerEvents: 'none',
-  }}
-/>
-      
 
       <div className="lang-bar">
         <span style={{ marginRight: 'auto' }}>Bahasa / Language</span>

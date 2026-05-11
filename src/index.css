@@ -29,25 +29,6 @@ html {
   font-size: 16px;
   background: #08090d;
   min-height: 100%;
-  /* iOS Safari: fill the overscroll/bounce area above the page with your bg color */
-  background-attachment: fixed;
-}
-
-/* iOS Safari overscroll fix — the status bar / notch area bleeds this color */
-@supports (-webkit-touch-callout: none) {
-  html {
-    /* Paint the safe-area above content with your bg color */
-    background-color: #08090d;
-    /* This makes the rubber-band overscroll area match your navbar color */
-    padding-top: env(safe-area-inset-top);
-    margin-top: calc(-1 * env(safe-area-inset-top));
-  }
-
-  body {
-    /* Ensure body also fills correctly on iOS */
-    background-color: #08090d;
-    min-height: 100dvh;
-  }
 }
 
 body {
@@ -57,7 +38,7 @@ body {
   overflow-x: hidden;
   cursor: auto;
   line-height: 1.6;
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 a { text-decoration: none; color: inherit; }
