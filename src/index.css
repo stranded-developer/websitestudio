@@ -24,13 +24,32 @@
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* html AND body both dark — any leak on iPhone shows same color, invisible */
 html {
   scroll-behavior: smooth;
   font-size: 16px;
   background: #08090d;
   min-height: 100%;
+  /* iOS Safari: fill the overscroll/bounce area above the page with your bg color */
+  background-attachment: fixed;
 }
+
+/* iOS Safari overscroll fix — the status bar / notch area bleeds this color */
+@supports (-webkit-touch-callout: none) {
+  html {
+    /* Paint the safe-area above content with your bg color */
+    background-color: #08090d;
+    /* This makes the rubber-band overscroll area match your navbar color */
+    padding-top: env(safe-area-inset-top);
+    margin-top: calc(-1 * env(safe-area-inset-top));
+  }
+
+  body {
+    /* Ensure body also fills correctly on iOS */
+    background-color: #08090d;
+    min-height: 100dvh;
+  }
+}
+
 body {
   background: #08090d;
   color: var(--text);
@@ -39,7 +58,6 @@ body {
   cursor: auto;
   line-height: 1.6;
   min-height: 100vh;
-  /* NO padding-top — sections handle their own offset */
 }
 
 a { text-decoration: none; color: inherit; }
@@ -61,7 +79,6 @@ body::before {
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--purple-dim); border-radius: 4px; }
 
-/* Sections offset themselves — no body padding-top needed */
 .page-section { padding: 6rem 3rem; max-width: 1200px; margin: 0 auto; }
 .section-label { font-size: .7rem; color: var(--purple-light); letter-spacing: .16em; text-transform: uppercase; margin-bottom: .8rem; display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; }
 .section-title { font-family: 'Outfit', sans-serif; font-size: clamp(1.9rem, 4vw, 3.2rem); font-weight: 800; letter-spacing: -.03em; line-height: 1.12; margin-bottom: .8rem; }
