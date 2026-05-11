@@ -1,5 +1,5 @@
 /* =============================================
-   home.css — Hero + Frame Sequence + About
+   home.css — Hero + About
    ============================================= */
 
 /* ---- HERO ---- */
@@ -37,8 +37,9 @@
 .hero-content {
   position: relative; z-index: 2;
   text-align: center;
-  padding: 0 2rem;
-  max-width: 940px;
+  padding: 0 1.5rem;
+  max-width: 880px;
+  width: 100%;
 }
 .hero-badge {
   display: inline-flex;
@@ -48,12 +49,13 @@
   border: 1px solid var(--border);
   border-radius: 100px;
   padding: .38rem 1rem;
-  font-size: .76rem;
+  font-size: .74rem;
   color: var(--purple-light);
   letter-spacing: .08em;
   text-transform: uppercase;
   margin-bottom: 2rem;
   animation: fadeUp .8s ease .2s both;
+  font-weight: 600;
 }
 .hero-badge-dot {
   width: 6px; height: 6px;
@@ -64,11 +66,11 @@
 @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:.25; } }
 
 h1.hero-title {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(3.2rem, 8vw, 7rem);
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.6rem, 7vw, 6rem);
   font-weight: 800;
   line-height: 1.0;
-  letter-spacing: -.035em;
+  letter-spacing: -.04em;
   margin-bottom: 1.5rem;
   animation: fadeUp .8s ease .4s both;
 }
@@ -79,11 +81,11 @@ h1.hero-title {
 }
 
 .hero-sub {
-  font-size: clamp(1rem, 1.8vw, 1.18rem);
+  font-size: clamp(.95rem, 1.8vw, 1.1rem);
   color: var(--text2);
-  max-width: 560px;
+  max-width: 520px;
   margin: 0 auto 2.5rem;
-  line-height: 1.75;
+  line-height: 1.8;
   animation: fadeUp .8s ease .6s both;
 }
 .hero-actions {
@@ -96,9 +98,9 @@ h1.hero-title {
 
 .hero-stats {
   display: flex;
-  gap: 4rem;
+  gap: 3rem;
   justify-content: center;
-  margin-top: 4.5rem;
+  margin-top: 4rem;
   padding-top: 2.5rem;
   border-top: 1px solid var(--border2);
   animation: fadeUp .8s ease 1s both;
@@ -106,29 +108,30 @@ h1.hero-title {
 }
 .stat-item { text-align: center; }
 .stat-num {
-  font-family: 'Syne', sans-serif;
-  font-size: 2.3rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.1rem;
   font-weight: 800;
   line-height: 1;
+  letter-spacing: -.03em;
 }
 .stat-num em { color: var(--purple-light); font-style: normal; }
 .stat-label {
-  font-size: .75rem;
+  font-size: .72rem;
   color: var(--text3);
-  letter-spacing: .09em;
+  letter-spacing: .08em;
   text-transform: uppercase;
   margin-top: .3rem;
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(32px); }
+  from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
 /* Scroll hint */
 .scroll-hint {
   position: absolute;
-  bottom: 2.5rem; left: 50%;
+  bottom: 2rem; left: 50%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
@@ -137,13 +140,13 @@ h1.hero-title {
   animation: fadeUp 1s ease 1.6s both;
 }
 .scroll-hint span {
-  font-size: .7rem;
+  font-size: .68rem;
   color: var(--text3);
   letter-spacing: .1em;
   text-transform: uppercase;
 }
 .scroll-line {
-  width: 1px; height: 48px;
+  width: 1px; height: 44px;
   background: linear-gradient(to bottom, var(--purple), transparent);
   animation: scrollAnim 2.2s ease-in-out infinite;
 }
@@ -154,79 +157,9 @@ h1.hero-title {
   100% { transform: scaleY(0); transform-origin: bottom; }
 }
 
-/* ---- FRAME SEQUENCE ---- */
-#frame-sequence {
-  position: relative;
-  height: 350vh;
-}
-.frame-sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: var(--bg);
-}
-.frame-wrap {
-  position: relative;
-  width: min(840px, 90vw);
-  aspect-ratio: 16/9;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  box-shadow: 0 0 100px rgba(124,92,191,.18);
-}
-#frameCanvas { width: 100%; height: 100%; display: block; }
-
-.frame-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 2.5rem;
-  background: linear-gradient(to top, rgba(8,9,13,.7) 0%, transparent 50%);
-  pointer-events: none;
-}
-.frame-overlay-text {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(1.4rem, 3vw, 2.2rem);
-  font-weight: 700;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity .5s, transform .5s;
-}
-.frame-overlay-text.visible { opacity: 1; transform: translateY(0); }
-.frame-progress-bar {
-  position: absolute;
-  bottom: 0; left: 0;
-  height: 3px;
-  background: linear-gradient(to right, var(--purple), var(--purple-light));
-  width: 0%;
-  transition: width .05s linear;
-}
-
-/* Sequence instructions card */
-.seq-instructions {
-  position: absolute;
-  top: 1.2rem; right: 1.2rem;
-  background: rgba(8,9,13,.8);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: .7rem 1rem;
-  font-size: .72rem;
-  color: var(--text3);
-  max-width: 220px;
-  line-height: 1.5;
-  backdrop-filter: blur(8px);
-}
-.seq-instructions strong { color: var(--purple-light); display: block; margin-bottom: .2rem; }
-
 /* ---- MARQUEE ---- */
 .marquee-section {
-  padding: 3.5rem 0;
+  padding: 3rem 0;
   border-top: 1px solid var(--border2);
   border-bottom: 1px solid var(--border2);
   overflow: hidden;
@@ -242,11 +175,11 @@ h1.hero-title {
   align-items: center;
   gap: .8rem;
   white-space: nowrap;
-  font-family: 'Syne', sans-serif;
-  font-size: 1.3rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--text3);
-  transition: color .2s;
+  letter-spacing: -.01em;
 }
 .marquee-dot {
   width: 5px; height: 5px;
@@ -260,24 +193,31 @@ h1.hero-title {
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4.5rem;
+  gap: 4rem;
   align-items: center;
 }
-.about-title { font-family: 'Syne', sans-serif; font-size: clamp(2rem,4vw,3.3rem); font-weight: 800; letter-spacing: -.025em; line-height: 1.1; }
+.about-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.9rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1.12;
+}
 .about-title .accent { color: var(--purple-light); }
 
 .about-body { display: flex; flex-direction: column; gap: 1.4rem; }
-.about-body p { color: var(--text2); line-height: 1.8; font-size: 1.03rem; }
+.about-body p { color: var(--text2); line-height: 1.8; font-size: 1rem; }
 
-.feature-pills { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: .5rem; }
+.feature-pills { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .5rem; }
 .pill {
   background: rgba(124,92,191,.1);
   border: 1px solid var(--border);
   border-radius: 100px;
-  padding: .32rem .9rem;
-  font-size: .78rem;
+  padding: .3rem .9rem;
+  font-size: .76rem;
   color: var(--purple-light);
-  letter-spacing: .04em;
+  letter-spacing: .03em;
+  font-weight: 500;
   transition: background .2s, color .2s;
 }
 .pill:hover { background: rgba(124,92,191,.2); color: var(--text); }
@@ -297,8 +237,14 @@ h1.hero-title {
   transition: border-color .3s, transform .3s;
 }
 .why-card:hover { border-color: var(--border); transform: translateY(-4px); }
-.why-icon { font-size: 1.8rem; margin-bottom: 1rem; }
-.why-card h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: .5rem; }
+.why-icon { font-size: 1.7rem; margin-bottom: 1rem; }
+.why-card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: .5rem;
+  letter-spacing: -.01em;
+}
 .why-card p { font-size: .875rem; color: var(--text2); line-height: 1.65; }
 
 @media (max-width: 900px) {
@@ -306,6 +252,10 @@ h1.hero-title {
   .why-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 600px) {
-  .hero-stats { gap: 2rem; }
+  .hero-stats { gap: 1.5rem; }
+  h1.hero-title { letter-spacing: -.03em; }
   .why-grid { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; align-items: center; }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-ghost { width: 100%; max-width: 300px; justify-content: center; }
 }

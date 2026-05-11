@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>websitestudio.id — Premium Web Design Studio Indonesia</title>
   <meta name="description" content="Stunning, fast, interactive websites that convert. Indonesia's premium web design studio. Landing pages, e-commerce, company profiles and more." />
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
@@ -11,33 +11,42 @@
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════
-     CURSOR
-═══════════════════════════════════════ -->
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
-
-<!-- ═══════════════════════════════════════
-     NAVBAR
-═══════════════════════════════════════ -->
+<!-- NAVBAR -->
 <nav id="navbar">
   <a href="index.html" class="nav-logo">website<span>studio</span>.id</a>
 
+  <!-- Desktop links -->
   <ul class="nav-links">
-    <li><a href="index.html"   data-page="index.html"  >Home</a></li>
-    <li><a href="work.html"    data-page="work.html"   >Work</a></li>
-    <li><a href="pricing.html" data-page="pricing.html">Pricing</a></li>
-    <li><a href="contact.html" data-page="contact.html">Contact</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
 
   <div class="nav-right">
     <a href="contact.html" class="nav-cta">Get a Quote →</a>
+    <!-- Hamburger (mobile) -->
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
-<!-- ═══════════════════════════════════════
-     HERO
-═══════════════════════════════════════ -->
+<!-- Mobile dropdown menu -->
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+  <a href="index.html">Home <span class="menu-arrow">→</span></a>
+  <a href="#about">About Us <span class="menu-arrow">→</span></a>
+  <a href="#testimonials">Testimonials <span class="menu-arrow">→</span></a>
+  <a href="work.html">Our Work <span class="menu-arrow">→</span></a>
+  <a href="pricing.html">Pricing <span class="menu-arrow">→</span></a>
+  <a href="contact.html">Contact Us <span class="menu-arrow">→</span></a>
+  <div class="mobile-menu-cta">
+    <a href="contact.html" class="cta-primary">Get a Quote →</a>
+    <a href="https://wa.me/6281234567890?text=Hi%20websitestudio.id!%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener" class="cta-wa">💬 Chat on WhatsApp</a>
+  </div>
+</div>
+
+<!-- HERO -->
 <section id="home">
   <div class="hero-bg">
     <canvas id="particleCanvas"></canvas>
@@ -94,35 +103,7 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     FRAME SEQUENCE  (240-frame animation)
-═══════════════════════════════════════ -->
-<div id="frame-sequence">
-  <div class="frame-sticky">
-    <div class="frame-wrap">
-      <canvas id="frameCanvas" width="1280" height="720"></canvas>
-
-      <div class="frame-overlay">
-        <div class="frame-overlay-text visible" id="frameOverlayText">
-          Crafting digital experiences
-        </div>
-      </div>
-
-      <div class="frame-progress-bar" id="frameProgress"></div>
-
-      <div class="seq-instructions">
-        <strong>📁 Dev note</strong>
-        Place 240 frames named <code>frame_001.jpg … frame_240.jpg</code>
-        in <code>assets/images/seq/</code> then follow the comment in
-        <code>js/home.js</code> to swap in real images.
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════
-     MARQUEE
-═══════════════════════════════════════ -->
+<!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track" aria-hidden="true">
     <span class="marquee-item"><span class="marquee-dot"></span>Landing Pages</span>
@@ -135,7 +116,6 @@
     <span class="marquee-item"><span class="marquee-dot"></span>Portfolio Sites</span>
     <span class="marquee-item"><span class="marquee-dot"></span>Event Pages</span>
     <span class="marquee-item"><span class="marquee-dot"></span>Digital Marketing</span>
-    <!-- duplicate for seamless loop -->
     <span class="marquee-item"><span class="marquee-dot"></span>Landing Pages</span>
     <span class="marquee-item"><span class="marquee-dot"></span>E-commerce Stores</span>
     <span class="marquee-item"><span class="marquee-dot"></span>Company Profiles</span>
@@ -149,9 +129,7 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     ABOUT
-═══════════════════════════════════════ -->
+<!-- ABOUT -->
 <section id="about">
   <div class="page-section">
     <div class="about-grid">
@@ -222,9 +200,7 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     TESTIMONIALS MARQUEE
-═══════════════════════════════════════ -->
+<!-- TESTIMONIALS -->
 <section id="testimonials" style="background:var(--bg2); padding: 5rem 0; overflow:hidden;">
   <div class="page-section" style="padding-bottom:2rem;">
     <span class="section-label" style="text-align:center;display:block;">Testimonials</span>
@@ -234,79 +210,76 @@
   <div style="overflow:hidden; padding: 1rem 0;">
     <div style="display:flex; gap:1.5rem; width:max-content; animation: marquee 32s linear infinite;">
 
-      <!-- CARD SET (duplicated for loop) -->
-      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:1.5rem;width:320px;flex-shrink:0;">
+      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:1.5rem;width:300px;flex-shrink:0;">
         <div style="color:var(--purple-light);font-size:.75rem;letter-spacing:3px;margin-bottom:.8rem;">★★★★★</div>
         <p style="font-size:.875rem;color:var(--text2);line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"Our website transformed how clients see us. Leads doubled within the first month of launch."</p>
         <div style="display:flex;align-items:center;gap:.75rem;">
-          <div style="width:34px;height:34px;border-radius:50%;background:var(--purple-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;color:var(--purple-light);">AR</div>
+          <div style="width:34px;height:34px;border-radius:50%;background:var(--purple-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:700;color:var(--purple-light);">AR</div>
           <div><div style="font-size:.85rem;font-weight:500;">Adi Ramadhan</div><div style="font-size:.75rem;color:var(--text3);">CEO, PT Karya Maju</div></div>
         </div>
       </div>
 
-      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:1.5rem;width:320px;flex-shrink:0;">
+      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:1.5rem;width:300px;flex-shrink:0;">
         <div style="color:var(--purple-light);font-size:.75rem;letter-spacing:3px;margin-bottom:.8rem;">★★★★★</div>
         <p style="font-size:.875rem;color:var(--text2);line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"Delivered in 5 days and it looked better than I ever imagined. The animations are stunning!"</p>
         <div style="display:flex;align-items:center;gap:.75rem;">
-          <div style="width:34px;height:34px;border-radius:50%;background:var(--purple-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;color:var(--purple-light);">SR</div>
+          <div style="width:34px;height:34px;border-radius:50%;background:var(--purple-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:700;color:var(--purple-light);">SR</div>
           <div><div style="font-size:.85rem;font-weight:500;">Sari Rahayu</div><div style="font-size:.75rem;color:var(--text3);">Owner, Sari Boutique</div></div>
         </div>
       </div>
 
-      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:1.5rem;width:320px;flex-shrink:0;">
+      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:1.5rem;width:300px;flex-shrink:0;">
         <div style="color:var(--purple-light);font-size:.75rem;letter-spacing:3px;margin-bottom:.8rem;">★★★★★</div>
         <p style="font-size:.875rem;color:var(--text2);line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"Professional and creative. They understood our brand from the first call. Highly recommend!"</p>
         <div style="display:flex;align-items:center;gap:.75rem;">
-          <div style="width:34px;height:34px;border-radius:50%;background:var(--purple-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;color:var(--purple-light);">BP</div>
+          <div style="width:34px;height:34px;border-radius:50%;background:var(--purple-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:700;color:var(--purple-light);">BP</div>
           <div><div style="font-size:.85rem;font-weight:500;">Bima Pratama</div><div style="font-size:.75rem;color:var(--text3);">Founder, BuildFast Agency</div></div>
         </div>
       </div>
 
-      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:1.5rem;width:320px;flex-shrink:0;">
+      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:1.5rem;width:300px;flex-shrink:0;">
         <div style="color:var(--purple-light);font-size:.75rem;letter-spacing:3px;margin-bottom:.8rem;">★★★★★</div>
         <p style="font-size:.875rem;color:var(--text2);line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"Investors were blown away by our site before we even started pitching. Best investment ever."</p>
         <div style="display:flex;align-items:center;gap:.75rem;">
-          <div style="width:34px;height:34px;border-radius:50%;background:var(--purple-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;color:var(--purple-light);">DW</div>
+          <div style="width:34px;height:34px;border-radius:50%;background:var(--purple-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:700;color:var(--purple-light);">DW</div>
           <div><div style="font-size:.85rem;font-weight:500;">Dinda Wijaya</div><div style="font-size:.75rem;color:var(--text3);">Co-founder, Fintech ID</div></div>
         </div>
       </div>
 
-      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:1.5rem;width:320px;flex-shrink:0;">
+      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:1.5rem;width:300px;flex-shrink:0;">
         <div style="color:var(--purple-light);font-size:.75rem;letter-spacing:3px;margin-bottom:.8rem;">★★★★★</div>
         <p style="font-size:.875rem;color:var(--text2);line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"The booking system saves us 3 hours per day. Every rupiah was worth it. Luar biasa!"</p>
         <div style="display:flex;align-items:center;gap:.75rem;">
-          <div style="width:34px;height:34px;border-radius:50%;background:var(--purple-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;color:var(--purple-light);">RN</div>
+          <div style="width:34px;height:34px;border-radius:50%;background:var(--purple-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:700;color:var(--purple-light);">RN</div>
           <div><div style="font-size:.85rem;font-weight:500;">Rico Nugroho</div><div style="font-size:.75rem;color:var(--text3);">Owner, Warung Rico</div></div>
         </div>
       </div>
 
-      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:1.5rem;width:320px;flex-shrink:0;">
+      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:1.5rem;width:300px;flex-shrink:0;">
         <div style="color:var(--purple-light);font-size:.75rem;letter-spacing:3px;margin-bottom:.8rem;">★★★★★</div>
         <p style="font-size:.875rem;color:var(--text2);line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"Design quality on par with agencies that charge 10× more. Brief to launch in one week flat."</p>
         <div style="display:flex;align-items:center;gap:.75rem;">
-          <div style="width:34px;height:34px;border-radius:50%;background:var(--purple-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;color:var(--purple-light);">LH</div>
+          <div style="width:34px;height:34px;border-radius:50%;background:var(--purple-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:700;color:var(--purple-light);">LH</div>
           <div><div style="font-size:.85rem;font-weight:500;">Linda Halim</div><div style="font-size:.75rem;color:var(--text3);">Marketing Dir., Griya Property</div></div>
         </div>
       </div>
 
-      <!-- Duplicate set for seamless loop -->
-      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:1.5rem;width:320px;flex-shrink:0;"><div style="color:var(--purple-light);font-size:.75rem;letter-spacing:3px;margin-bottom:.8rem;">★★★★★</div><p style="font-size:.875rem;color:var(--text2);line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"Our website transformed how clients see us. Leads doubled within the first month of launch."</p><div style="display:flex;align-items:center;gap:.75rem;"><div style="width:34px;height:34px;border-radius:50%;background:var(--purple-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;color:var(--purple-light);">AR</div><div><div style="font-size:.85rem;font-weight:500;">Adi Ramadhan</div><div style="font-size:.75rem;color:var(--text3);">CEO, PT Karya Maju</div></div></div></div>
-      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:1.5rem;width:320px;flex-shrink:0;"><div style="color:var(--purple-light);font-size:.75rem;letter-spacing:3px;margin-bottom:.8rem;">★★★★★</div><p style="font-size:.875rem;color:var(--text2);line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"Delivered in 5 days and it looked better than I ever imagined. The animations are stunning!"</p><div style="display:flex;align-items:center;gap:.75rem;"><div style="width:34px;height:34px;border-radius:50%;background:var(--purple-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;color:var(--purple-light);">SR</div><div><div style="font-size:.85rem;font-weight:500;">Sari Rahayu</div><div style="font-size:.75rem;color:var(--text3);">Owner, Sari Boutique</div></div></div></div>
-      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:1.5rem;width:320px;flex-shrink:0;"><div style="color:var(--purple-light);font-size:.75rem;letter-spacing:3px;margin-bottom:.8rem;">★★★★★</div><p style="font-size:.875rem;color:var(--text2);line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"Professional and creative. They understood our brand from the first call. Highly recommend!"</p><div style="display:flex;align-items:center;gap:.75rem;"><div style="width:34px;height:34px;border-radius:50%;background:var(--purple-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;color:var(--purple-light);">BP</div><div><div style="font-size:.85rem;font-weight:500;">Bima Pratama</div><div style="font-size:.75rem;color:var(--text3);">Founder, BuildFast Agency</div></div></div></div>
-      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:1.5rem;width:320px;flex-shrink:0;"><div style="color:var(--purple-light);font-size:.75rem;letter-spacing:3px;margin-bottom:.8rem;">★★★★★</div><p style="font-size:.875rem;color:var(--text2);line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"Investors were blown away by our site before we even started pitching. Best investment ever."</p><div style="display:flex;align-items:center;gap:.75rem;"><div style="width:34px;height:34px;border-radius:50%;background:var(--purple-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;color:var(--purple-light);">DW</div><div><div style="font-size:.85rem;font-weight:500;">Dinda Wijaya</div><div style="font-size:.75rem;color:var(--text3);">Co-founder, Fintech ID</div></div></div></div>
+      <!-- Duplicate for loop -->
+      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:1.5rem;width:300px;flex-shrink:0;"><div style="color:var(--purple-light);font-size:.75rem;letter-spacing:3px;margin-bottom:.8rem;">★★★★★</div><p style="font-size:.875rem;color:var(--text2);line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"Our website transformed how clients see us. Leads doubled within the first month of launch."</p><div style="display:flex;align-items:center;gap:.75rem;"><div style="width:34px;height:34px;border-radius:50%;background:var(--purple-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:700;color:var(--purple-light);">AR</div><div><div style="font-size:.85rem;font-weight:500;">Adi Ramadhan</div><div style="font-size:.75rem;color:var(--text3);">CEO, PT Karya Maju</div></div></div></div>
+      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:1.5rem;width:300px;flex-shrink:0;"><div style="color:var(--purple-light);font-size:.75rem;letter-spacing:3px;margin-bottom:.8rem;">★★★★★</div><p style="font-size:.875rem;color:var(--text2);line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"Delivered in 5 days and it looked better than I ever imagined. The animations are stunning!"</p><div style="display:flex;align-items:center;gap:.75rem;"><div style="width:34px;height:34px;border-radius:50%;background:var(--purple-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:700;color:var(--purple-light);">SR</div><div><div style="font-size:.85rem;font-weight:500;">Sari Rahayu</div><div style="font-size:.75rem;color:var(--text3);">Owner, Sari Boutique</div></div></div></div>
+      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:1.5rem;width:300px;flex-shrink:0;"><div style="color:var(--purple-light);font-size:.75rem;letter-spacing:3px;margin-bottom:.8rem;">★★★★★</div><p style="font-size:.875rem;color:var(--text2);line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"Professional and creative. They understood our brand from the first call. Highly recommend!"</p><div style="display:flex;align-items:center;gap:.75rem;"><div style="width:34px;height:34px;border-radius:50%;background:var(--purple-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:700;color:var(--purple-light);">BP</div><div><div style="font-size:.85rem;font-weight:500;">Bima Pratama</div><div style="font-size:.75rem;color:var(--text3);">Founder, BuildFast Agency</div></div></div></div>
+      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:1.5rem;width:300px;flex-shrink:0;"><div style="color:var(--purple-light);font-size:.75rem;letter-spacing:3px;margin-bottom:.8rem;">★★★★★</div><p style="font-size:.875rem;color:var(--text2);line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"Investors were blown away by our site before we even started pitching. Best investment ever."</p><div style="display:flex;align-items:center;gap:.75rem;"><div style="width:34px;height:34px;border-radius:50%;background:var(--purple-glow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:700;color:var(--purple-light);">DW</div><div><div style="font-size:.85rem;font-weight:500;">Dinda Wijaya</div><div style="font-size:.75rem;color:var(--text3);">Co-founder, Fintech ID</div></div></div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     CTA BANNER
-═══════════════════════════════════════ -->
-<section style="padding:5rem 3rem; text-align:center; position:relative; overflow:hidden;">
+<!-- CTA BANNER -->
+<section style="padding:5rem 1.5rem; text-align:center; position:relative; overflow:hidden;">
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(124,92,191,.1),transparent 70%);pointer-events:none;"></div>
-  <div style="position:relative;z-index:1; max-width:640px; margin:0 auto;">
-    <span class="section-label reveal">Ready?</span>
-    <h2 class="section-title reveal" style="font-size:clamp(2rem,5vw,3.8rem);">Let's build something <span style="color:var(--purple-light);">extraordinary.</span></h2>
-    <p class="section-sub reveal" style="margin:0 auto 2rem;">
+  <div style="position:relative;z-index:1; max-width:600px; margin:0 auto;">
+    <span class="section-label reveal" style="display:block;text-align:center;">Ready?</span>
+    <h2 class="section-title reveal" style="font-size:clamp(1.8rem,5vw,3.5rem);">Let's build something <span style="color:var(--purple-light);">extraordinary.</span></h2>
+    <p class="section-sub reveal" style="margin:0 auto 2rem;text-align:center;">
       Drop us a message and we'll come back with a free strategy session and quote — usually within the hour.
     </p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;" class="reveal reveal-d1">
@@ -316,9 +289,7 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     FOOTER
-═══════════════════════════════════════ -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-logo">website<span>studio</span>.id</div>
   <div class="footer-copy">© 2025 websitestudio.id · All rights reserved · Jakarta, Indonesia</div>
