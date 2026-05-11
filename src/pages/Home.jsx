@@ -110,7 +110,7 @@ export default function Home() {
       `}</style>
 
       <section id="home">
-        <div style={{ height: "calc(96px + env(safe-area-inset-top))", flexShrink: 0, width: "100%", position: "relative", zIndex: 2 }} />
+        
         <div className="hero-bg">
           <canvas ref={canvasRef} id="particleCanvas" />
           <div className="hero-orb" />
