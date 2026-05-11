@@ -59,28 +59,16 @@ export default function Home() {
        #home {
   position: relative;
   min-height: 100dvh;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-
-  overflow:hidden;
-
-  isolation:isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
         .hero-bg {
-  position:absolute;
-
-  top: calc(96px + env(safe-area-inset-top));
-  left:0;
-  right:0;
-  bottom:0;
-
-  z-index:0;
-  isolation: isolate;
-
-  overflow:hidden;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
        #particleCanvas {
   position:absolute;

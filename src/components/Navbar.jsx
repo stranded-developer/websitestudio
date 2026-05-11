@@ -88,24 +88,20 @@ export default function Navbar() {
 
         /* Navbar sits directly below lang-bar */
         #navbar {
-          transform: translateZ(0);
-          will-change: transform; 
-          isolation: isolate;
-          -webkit-backdrop-filter: none; /* kill any inherited blur */
-          
-          top: calc(32px + env(safe-area-inset-top));
-          left: 0; right: 0;
-          
-          height: 64px;
-          padding: 0 2rem;
-          display: flex; align-items: center; justify-content: space-between;
-          position: fixed;
-  z-index: 999999;
+  position: fixed;
+  top: calc(32px + env(safe-area-inset-top));
+  left: 0;
+  right: 0;
+  height: 64px;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
   background: #08090d;
-          border-bottom: 1px solid var(--border2);
-          transition: border-bottom-color .3s;
-          box-sizing: border-box;
-        }
+  border-bottom: 1px solid var(--border2);
+  box-sizing: border-box;
+}
         #navbar.scrolled { border-bottom-color: var(--border); }
 
         .desktop-nav { display: flex !important; }
