@@ -19,7 +19,7 @@
   --whatsapp:      #25D366;
   --lang-h:        32px;
   --nav-h:         64px;
-  --header-h:      calc(var(--lang-h) + var(--nav-h)); /* 96px total */
+  --header-h:      96px; /* fixed px — do NOT use calc() here, iOS needs a concrete value */
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -31,13 +31,20 @@ body {
   overflow-x: hidden;
   cursor: auto;
   line-height: 1.6;
-  /* Push all page content below the fixed lang-bar + navbar */
   padding-top: var(--header-h);
 }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 img, video { display: block; max-width: 100%; }
 button { font-family: 'Plus Jakarta Sans', sans-serif; cursor: pointer; border: none; background: none; }
+
+/* Force GPU layer on ALL fixed elements — key iOS Safari fix */
+.lang-bar, #navbar, .mobile-menu {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
 
 body::before {
   content: '';
