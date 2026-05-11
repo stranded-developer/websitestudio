@@ -56,30 +56,9 @@ export default function Home() {
   return (
     <>
       <style>{`
-       #home {
-  position: relative;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-        .hero-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-       #particleCanvas {
-  position:absolute;
-
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-
-  display:block;
-}
+        #home { position:relative; min-height:100dvh; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; }
+        .hero-bg { position:absolute; inset:0; z-index:0; }
+        #particleCanvas { position:absolute; inset:0; width:100%; height:100%; }
         .hero-orb { position:absolute; width:780px; height:780px; border-radius:50%; background:radial-gradient(circle,rgba(124,92,191,.2) 0%,transparent 68%); top:50%; left:50%; transform:translate(-50%,-62%); pointer-events:none; animation:orbPulse 7s ease-in-out infinite; }
         @keyframes orbPulse { 0%,100%{transform:translate(-50%,-62%) scale(1);opacity:.7} 50%{transform:translate(-50%,-62%) scale(1.1);opacity:1} }
         .mesh-overlay { position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(124,92,191,.07) 0%,transparent 70%); pointer-events:none; z-index:1; }
@@ -131,7 +110,7 @@ export default function Home() {
       `}</style>
 
       <section id="home">
-        
+        <div style={{ height: "calc(96px + env(safe-area-inset-top))", flexShrink: 0, width: "100%", position: "relative", zIndex: 2 }} />
         <div className="hero-bg">
           <canvas ref={canvasRef} id="particleCanvas" />
           <div className="hero-orb" />

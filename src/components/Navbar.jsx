@@ -48,15 +48,26 @@ export default function Navbar() {
   return (
     <>
       <style>{`
+        /* iOS Safari only — covers bleed-through above lang-bar when scrolling */
+        .ios-safe-cover { display: none; }
+        @supports (-webkit-touch-callout: none) {
+          .ios-safe-cover {
+            display: block;
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1200;
+            height: env(safe-area-inset-top);
+            background: #08090d;
+            pointer-events: none;
+          }
+        }
+
         /* Lang bar: sits at very top, extends INTO safe area (notch/Dynamic Island) */
         .lang-bar {
-        isolation: isolate;
           position: fixed;
           top: 0; left: 0; right: 0;
           z-index: 1100;
-          /* Height = base 32px + safe area (notch height) */
           height: calc(32px + env(safe-area-inset-top));
-          /* Push content DOWN below the notch */
           padding-top: env(safe-area-inset-top);
           padding-left: 2rem;
           padding-right: 2rem;
@@ -88,20 +99,18 @@ export default function Navbar() {
 
         /* Navbar sits directly below lang-bar */
         #navbar {
-  position: fixed;
-  top: calc(32px + env(safe-area-inset-top));
-  left: 0;
-  right: 0;
-  height: 64px;
-  padding: 0 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 1000;
-  background: #08090d;
-  border-bottom: 1px solid var(--border2);
-  box-sizing: border-box;
-}
+          position: fixed;
+          top: calc(32px + env(safe-area-inset-top));
+          left: 0; right: 0;
+          z-index: 1000;
+          height: 64px;
+          padding: 0 2rem;
+          display: flex; align-items: center; justify-content: space-between;
+          background: #08090d;
+          border-bottom: 1px solid var(--border2);
+          transition: border-bottom-color .3s;
+          box-sizing: border-box;
+        }
         #navbar.scrolled { border-bottom-color: var(--border); }
 
         .desktop-nav { display: flex !important; }
@@ -112,7 +121,6 @@ export default function Navbar() {
           .desktop-nav { display: none !important; }
           .desktop-only { display: none !important; }
           .hamburger-btn { display: flex !important; }
-          /* Keep padding-right/left for mobile, do NOT reset padding-top */
           .lang-bar { padding-left: 1.25rem; padding-right: 1.25rem; }
           #navbar { padding: 0 1.25rem; }
         }
@@ -146,27 +154,16 @@ export default function Navbar() {
 
         /* Page sections: padding-top = lang-bar + navbar + safe area */
         #home {
-  position: relative;
-
-  min-height: calc(100dvh - 96px - env(safe-area-inset-top));
-
-  margin-top: calc(96px + env(safe-area-inset-top));
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-
-  overflow:hidden;
-
-  isolation:isolate;
-
-  background:#08090d;
-}
+          padding-top: calc(96px + env(safe-area-inset-top));
+          min-height: 100dvh;
+        }
         .work-header, .pricing-header, .contact-header {
           padding-top: calc(96px + env(safe-area-inset-top) + 4rem) !important;
         }
       `}</style>
+
+      {/* iOS Safari only — blocks bleed-through in notch/Dynamic Island area */}
+      <div className="ios-safe-cover" />
 
       <div className="lang-bar">
         <span style={{ marginRight: 'auto' }}>Bahasa / Language</span>

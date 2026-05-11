@@ -35,17 +35,12 @@ body {
   background: #08090d;
   color: var(--text);
   font-family: 'Plus Jakarta Sans', sans-serif;
-  
+  overflow-x: hidden;
   cursor: auto;
   line-height: 1.6;
   min-height: 100vh;
-
-  overflow-x: hidden;
-
   /* NO padding-top — sections handle their own offset */
 }
-
-
 
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
