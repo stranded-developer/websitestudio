@@ -27,7 +27,20 @@
 
 /* ---- Reset & Base ---- */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; font-size: 16px; }
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  padding-top: calc(var(--nav-h) + env(safe-area-inset-top));
+}
 body {
   background: var(--bg);
   color: var(--text);
@@ -182,6 +195,11 @@ body::before {
 .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); width: 100%; }
 
+#navbar {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
 /* ---- Mobile dropdown menu ---- */
 .mobile-menu {
   display: none;
@@ -192,7 +210,9 @@ body::before {
   backdrop-filter: blur(32px);
   -webkit-backdrop-filter: blur(32px);
   border-bottom: 1px solid var(--border);
-  z-index: 999;
+
+  z-index: 2000;
+
   padding: calc(var(--nav-h) + 1rem) 2rem 2rem;
   flex-direction: column;
   gap: 0;
