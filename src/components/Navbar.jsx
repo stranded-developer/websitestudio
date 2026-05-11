@@ -98,14 +98,17 @@ export default function Navbar() {
         isolation: isolate;
 
   -webkit-backdrop-filter: none; /* kill any inherited blur */
-          position: fixed;
+          
           top: calc(32px + env(safe-area-inset-top));
           left: 0; right: 0;
-          z-index: 99999;
+          
           height: 64px;
           padding: 0 2rem;
           display: flex; align-items: center; justify-content: space-between;
-          background: rgba(8,9,13,.92);
+          position: fixed;
+  z-index: 999999;
+
+  background: #08090d;
 
           border-bottom: 1px solid var(--border2);
           transition: border-bottom-color .3s;

@@ -74,25 +74,25 @@ export default function Home() {
 }
         .hero-bg {
   position:absolute;
-  inset:0;
+
+  top: calc(96px + env(safe-area-inset-top));
+  left:0;
+  right:0;
+  bottom:0;
+
   z-index:0;
 
-  transform: translateZ(0);
-  will-change: transform;
+  overflow:hidden;
 }
        #particleCanvas {
   position:absolute;
-  inset:0;
+
+  top:0;
+  left:0;
   width:100%;
   height:100%;
 
-  z-index:0;
-
-  transform:translateZ(0);
-
-  pointer-events:none;
-
-  contain:strict;
+  display:block;
 }
         .hero-orb { position:absolute; width:780px; height:780px; border-radius:50%; background:radial-gradient(circle,rgba(124,92,191,.2) 0%,transparent 68%); top:50%; left:50%; transform:translate(-50%,-62%); pointer-events:none; animation:orbPulse 7s ease-in-out infinite; }
         @keyframes orbPulse { 0%,100%{transform:translate(-50%,-62%) scale(1);opacity:.7} 50%{transform:translate(-50%,-62%) scale(1.1);opacity:1} }
