@@ -211,7 +211,7 @@ export default function Navbar() {
             {t.nav.quote}
           </Link>
           <a href={`https://wa.me/${WA_NUMBER}?text=Hi%20websitestudio.id!`} target="_blank" rel="noopener noreferrer" style={{ display: 'block', textAlign: 'center', padding: '.9rem', borderRadius: '12px', fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: '.95rem', fontWeight: 600, background: 'var(--whatsapp)', color: '#fff', textDecoration: 'none' }}>
-            💬 WhatsApp
+            💬 WhatsAppm
           </a>
         </div>
       </div>
