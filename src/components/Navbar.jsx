@@ -72,6 +72,13 @@ export default function Navbar() {
           padding-bottom: 4px;
           box-sizing: border-box;
         }
+          #home {
+  overflow: clip;
+}
+
+        html {
+  overflow-y: clip; /* not 'hidden' — clip doesn't affect scroll behavior */
+}
 
         .lang-btn {
           background: none; border: none; cursor: pointer;
