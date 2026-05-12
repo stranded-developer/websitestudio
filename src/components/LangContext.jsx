@@ -21,7 +21,7 @@ export const translations = {
       pills: ['Desain Kustom','Mobile First','Siap SEO','Waktu Muat Cepat','Integrasi CMS','Animasi Scroll','Setup Analytics','Widget WhatsApp'],
       why: [
         { icon:'⚡', title:'Dijamin Cepat', desc:'Landing page dalam 1–2 hari. Website lengkap dalam 3–7 hari. Kami bergerak cepat tanpa mengorbankan kualitas.' },
-        { icon:'🎨', title:'100% Kustom', desc:'Nol template. Setiap situs dirancang dari kanvas kosong, dibangun khusus untuk brand Anda.' },
+        { icon:'🎨', title:'100% Custom', desc:'Nol template. Setiap situs dirancang dari kanvas kosong, dibangun khusus untuk brand Anda.' },
         { icon:'📈', title:'Dibangun untuk Konversi', desc:'Rapih saja tidak cukup. Kami mengoptimalkan setiap layout, CTA, dan alur untuk hasil bisnis nyata.' },
         { icon:'🛠', title:'Tim Full-Stack', desc:'Desain, frontend, backend, SEO — semua dalam satu tim. Satu kontak, end-to-end.' },
         { icon:'💬', title:'Selalu Bisa Dihubungi', desc:'Chat langsung via WhatsApp. Tidak perlu menunggu berjam-jam untuk balasan.' },
@@ -96,7 +96,10 @@ export const translations = {
       locationLabel:'Jakarta, Indonesia · Sen–Sab 09.00–21.00 WIB',
       intro:'Baik punya brief yang jelas atau hanya ide kasar — kami ingin mendengarnya. Kebanyakan pertanyaan mendapat balasan dalam 60 menit saat jam kerja.',
     },
-    footer: { copy:'© 2025 websitestudio.id · Hak cipta dilindungi · Jakarta, Indonesia' },
+    footer: { 
+    line1: '© 2026 websitestudio.id',
+    line2: 'Hak cipta dilindungi · Jakarta, Indonesia'
+    },
   },
   EN: {
     nav: { home: 'Home', work: 'Work', pricing: 'Pricing', contact: 'Contact', quote: 'Get a Quote →' },
@@ -191,7 +194,12 @@ export const translations = {
       locationLabel:'Jakarta, Indonesia · Mon–Sat 09.00–21.00 WIB',
       intro:'Whether you have a clear brief or just a rough idea — we\'d love to hear from you. Most enquiries get a reply within 60 minutes during business hours.',
     },
-    footer: { copy:'© 2025 websitestudio.id · All rights reserved · Jakarta, Indonesia' },
+
+    footer: { 
+    line1: '© 2026 websitestudio.id',
+    line2: 'All rights reserved · Jakarta, Indonesia'
+    },
+    
   },
 }
 
