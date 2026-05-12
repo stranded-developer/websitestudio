@@ -136,10 +136,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <div className="scroll-hint" aria-hidden="true">
-          <span>{t.about.scroll}</span>
-          <div className="scroll-line" />
-        </div>
+        
       </section>
 
       <div className="marquee-section">
