@@ -22,14 +22,28 @@ function useCountUp(target, duration = 2000) {
   useEffect(() => {
     const el = ref.current
     if (!el) return
+
+    // Skip animation for small numbers
+    if (target <= 10) {
+      const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting && !started.current) {
+          started.current = true
+          setCount(target)
+        }
+      }, { threshold: 0.3 })
+      observer.observe(el)
+      return () => observer.disconnect()
+    }
+
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting && !started.current) {
         started.current = true
         const startTime = performance.now()
         const tick = (now) => {
           const progress = Math.min((now - startTime) / duration, 1)
-          const eased = 1 - Math.pow(1 - progress, 3)
-          setCount(Math.floor(eased * target))
+          // Stronger ease: stays near 0 longer, rushes at end
+          const eased = 1 - Math.pow(1 - progress, 4)
+          setCount(Math.round(eased * target))
           if (progress < 1) requestAnimationFrame(tick)
           else setCount(target)
         }
@@ -41,6 +55,22 @@ function useCountUp(target, duration = 2000) {
   }, [target, duration])
 
   return { count, ref }
+}
+
+function StatItem({ num, suffix, label }) {
+  const { count, ref } = useCountUp(num, num <= 10 ? 0 : 2500)
+  const isSmall = num <= 10
+
+  return (
+    <div
+      className="stat-item"
+      ref={ref}
+      style={isSmall ? { transition: 'opacity 0.8s ease', opacity: count === num ? 1 : 0 } : {}}
+    >
+      <div className="stat-num">{count}<em>{suffix}</em></div>
+      <div className="stat-label">{label}</div>
+    </div>
+  )
 }
 
 function StatItem({ num, suffix, label }) {
