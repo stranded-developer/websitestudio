@@ -8,6 +8,7 @@ import Work from './pages/Work.jsx'
 import Pricing from './pages/Pricing.jsx'
 import Contact from './pages/Contact.jsx'
 import ScrollToTop from './components/ScrollToTop'
+import IntroVideo from './components/IntroVideo.jsx'
 
 export default function App() {
   return (
