@@ -42,7 +42,7 @@ function useCountUp(target, duration = 2000) {
         const tick = (now) => {
           const progress = Math.min((now - startTime) / duration, 1)
           // Stronger ease: stays near 0 longer, rushes at end
-          const eased = 1 - Math.pow(1 - progress, 2)
+          const eased = 1 - Math.pow(1 - progress, 3)
           setCount(Math.round(eased * target))
           if (progress < 1) requestAnimationFrame(tick)
           else setCount(target)
