@@ -66,9 +66,9 @@ useEffect(() => {
           -webkit-backdrop-filter: blur(12px);
           border-bottom: 1px solid var(--border2);
           display: flex;
-          align-items: flex-end;
+          align-items: center; /* was flex-end */
           justify-content: flex-end;
-          gap: .3rem;
+          gap: .25rem;
           font-size: .72rem;
           color: var(--text3);
           letter-spacing: .06em;
@@ -85,9 +85,9 @@ useEffect(() => {
           line-height: 1;
         }
         .lang-btn.active { color: var(--purple-light); background: var(--purple-glow2); }
-        .lang-btn:not(.active) { color: var(--text3); }
+        .lang-btn:not(.active) { color: var(--text2); }
         .lang-btn:not(.active):hover { color: var(--text2); }
-        .lang-sep { color: var(--border2); line-height: 1; }
+        .lang-sep { color: var(--text2); line-height: 1; vertical-align: middle; }
 
         /* Navbar sits directly below lang-bar */
         #navbar {
@@ -113,7 +113,7 @@ useEffect(() => {
           .desktop-nav { display: none !important; }
           .desktop-only { display: none !important; }
           .hamburger-btn { display: flex !important; }
-          .lang-bar { padding-left: 1.25rem; padding-right: 1.25rem; }
+          .lang-bar { padding-left: 1.25rem; align-items: center; padding-right: 1.25rem; }
           #navbar { padding: 0 1.25rem; }
         }
 
@@ -147,8 +147,9 @@ useEffect(() => {
       `}</style>
 
       <div className="lang-bar">
+  <span style={{ marginRight: '.3rem', color: 'var(--text2)' }}>Bahasa / Language</span>
   <button className={`lang-btn${lang === 'ID' ? ' active' : ''}`} onClick={() => setLang('ID')}>ID</button>
-  <span className="lang-sep">/</span>
+  <span className="lang-sep">|</span>
   <button className={`lang-btn${lang === 'EN' ? ' active' : ''}`} onClick={() => setLang('EN')}>EN</button>
 </div>
 

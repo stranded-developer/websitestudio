@@ -11,7 +11,7 @@ export const translations = {
       title2: 'yang menghasilkan.',
       sub: 'Website yang memukau, interaktif, dan super cepat — membuat brand Anda tak terlupakan. Dari konsep hingga live dalam hitungan hari.',
       cta1: 'Lihat Portofolio ↓', cta2: '💬 WhatsApp Kami',
-      stats: [['1100+','Website Terkirim'],['98%','Kepuasan Klien'],['4×','Rata-rata Peningkatan Konversi'],['5★','Rating Rata-rata']],
+      stats: [['1100+','Website Terkirim'],['98%','Kepuasan Klien'],['4×','Peningkatan Konversi'],['5★','Rating Rata-rata']],
     },
     about: {
       label: 'Tentang Kami', scroll: 'Scroll',
@@ -28,9 +28,9 @@ export const translations = {
         { icon:'🔒', title:'Dukungan 30 Hari', desc:'Setiap proyek mencakup dukungan pasca-peluncuran. Kami ada untuk Anda bahkan setelah situs live.' },
       ],
     },
-    testi: { label: 'Testimoni', title: 'Kata klien kami' },
+    testi: { label: 'Testimoni', title: 'Dari klien kami' },
     marqueeItems: ['Landing Page','Toko E-commerce','Profil Perusahaan','Platform SaaS','Sistem Booking','Website Restoran','Portal Properti','Website Portofolio','Halaman Event','Digital Marketing'],
-    cta: { label: 'Siap?', title1: 'Mari bangun sesuatu yang', title2: 'luar biasa.', sub: 'Kirim pesan dan kami akan langsung jadwalkan sesi konsultasi gratis dan penawaran — dalam kurang dari satu jam.', btn1: 'Mulai Proyek →', btn2: 'Lihat Harga' },
+    cta: { label: 'Siap?', title1: 'Ayo buat', title2: 'website impianmu.', sub: 'Kirim pesan dan kami akan langsung jadwalkan sesi konsultasi gratis dan penawaran — dalam kurang dari satu jam.', btn1: 'Mulai Proyek →', btn2: 'Lihat Harga' },
     work: {
       label: 'Portofolio', title1: 'Site yang sudah', title2: 'kami bangun & luncurkan',
       sub: 'Setiap proyek dirancang dari awal — tidak ada template, tidak ada jalan pintas. Klik kartu untuk melihat demo.',
@@ -105,7 +105,7 @@ export const translations = {
       title1: 'We build websites', title2: 'that convert.',
       sub: 'Stunning, interactive, blazing-fast websites that make your brand impossible to ignore. From concept to live — in days, not months.',
       cta1: 'See Our Work ↓', cta2: '💬 WhatsApp Us',
-      stats: [['1100+','Websites Delivered'],['98%','Client Satisfaction'],['4×','Avg. Conversion Lift'],['5★','Average Rating']],
+      stats: [['1100+','Websites Delivered'],['98%','Client Satisfaction'],['4×','Conversion Lift'],['5★','Average Rating']],
     },
     about: {
       label: 'About Us', scroll: 'Scroll',

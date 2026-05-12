@@ -67,7 +67,12 @@ function StatItem({ num, suffix, label }) {
       ref={ref}
       style={isSmall ? { transition: 'opacity 0.8s ease', opacity: count === num ? 1 : 0 } : {}}
     >
-      <div className="stat-num">{count}<em>{suffix}</em></div>
+      <div className="stat-num">
+  {count}
+  <em style={suffix.includes('★') ? { fontSize: '.55em', verticalAlign: 'middle', position: 'relative', bottom: '0.2em' } : undefined}>
+    {suffix}
+  </em>
+</div>
       <div className="stat-label">{label}</div>
     </div>
   )
@@ -76,10 +81,10 @@ function StatItem({ num, suffix, label }) {
 
 
 const STATS = [
-  { num: 1100, suffix: '+' },
-  { num: 98,   suffix: '%' },
-  { num: 4,    suffix: '×' },
-  { num: 5,    suffix: '★' },
+  { num: 1100, suffix: ' +' },
+  { num: 98,   suffix: ' %' },
+  { num: 9,    suffix: ' ×' },
+  { num: 5,    suffix: ' ★' },
 ]
 
 export default function Home() {
@@ -177,7 +182,7 @@ export default function Home() {
 
       <section id="home">
         <div className="hero-bg">
-          <canvas ref={canvasRef} id="particleCanvas" />
+          {/*<canvas ref={canvasRef} id="particleCanvas" />*/}
           <div className="hero-orb" />
         </div>
         <div className="mesh-overlay" />
