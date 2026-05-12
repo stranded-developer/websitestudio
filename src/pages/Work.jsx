@@ -116,12 +116,17 @@ export default function Work() {
         </div>
 
         <div className="reveal" style={{ textAlign:'center', marginTop:'4rem', paddingTop:'4rem', borderTop:'1px solid var(--border2)' }}>
-          <p style={{ color:'var(--text2)', marginBottom:'1.5rem', fontSize:'1.05rem' }}>{t.work.cta}</p>
-          <div style={{ display:'flex', gap:'1rem', justifyContent:'center', flexWrap:'wrap' }}>
-            <Link to="/contact" className="btn-primary">{t.work.btn1}</Link>
-            <a href={`https://wa.me/${WA_NUMBER}?text=Hi!%20I%20saw%20your%20portfolio.`} target="_blank" rel="noopener noreferrer" className="btn-ghost">{t.work.btn2}</a>
-          </div>
-        </div>
+  <p style={{ color:'var(--text2)', marginBottom:'1.5rem', fontSize:'1.05rem' }}>{t.work.cta}</p>
+  <a
+    href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Hi websitestudio.id! 👋 Saya melihat portofolio kalian dan ingin diskusi proyek.')}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="btn-primary"
+    style={{ background:'var(--whatsapp)' }}
+  >
+    {t.work.btn2}
+  </a>
+</div>
       </div>
 
       <Modal project={modal} onClose={() => setModal(null)} t={t} />

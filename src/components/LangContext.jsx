@@ -4,7 +4,7 @@ const LangContext = createContext()
 
 export const translations = {
   ID: {
-    nav: { home: 'Beranda', work: 'Portofolio', pricing: 'Harga', contact: 'Kontak', quote: 'Minta Penawaran →' },
+    nav: { home: 'Beranda', work: 'Portofolio', pricing: 'Harga', contact: 'Kontak', quote: 'Hubungi Kami' },
     hero: {
       badge: '🇮🇩 Studio Web Premium Indonesia',
       title1: 'Kami membangun website',
@@ -30,7 +30,7 @@ export const translations = {
     },
     testi: { label: 'Testimoni', title: 'Dari klien kami' },
     marqueeItems: ['Landing Page','Toko E-commerce','Profil Perusahaan','Platform SaaS','Sistem Booking','Website Restoran','Portal Properti','Website Portofolio','Halaman Event','Digital Marketing'],
-    cta: { label: 'Siap?', title1: 'Ayo buat', title2: 'website impianmu.', sub: 'Kirim pesan dan kami akan langsung jadwalkan sesi konsultasi gratis dan penawaran — dalam kurang dari satu jam.', btn1: 'Mulai Proyek →', btn2: 'Lihat Harga' },
+    cta: { label: 'Siap?', title1: 'Ayo buat', title2: 'website impianmu.', sub: 'Kirim pesan dan kami akan langsung jadwalkan sesi konsultasi gratis - dalam kurang dari satu jam.', btn1: 'Hubungi Kami →', btn2: 'Lihat Harga →' },
     work: {
       label: 'Portofolio', title1: 'Site yang sudah', title2: 'kami bangun & luncurkan',
       sub: 'Setiap proyek dirancang dari awal — tidak ada template, tidak ada jalan pintas. Klik kartu untuk melihat demo.',
@@ -43,9 +43,9 @@ export const translations = {
       sub: 'Semua paket termasuk optimasi mobile, setup hosting cepat, dan dukungan 30 hari pasca-peluncuran. Tidak ada biaya tersembunyi.',
       toggle1: 'Retainer Bulanan', toggle2: 'Tahunan', save: 'Hemat 20%',
       plans: [
-        { tier:'Pemula', name:'Landing Page', period:'pembayaran sekali · selesai 3–5 hari', btn:'Mulai Sekarang',
-          features:['1 halaman responsif penuh','Hingga 6 seksi kustom','Formulir kontak + tombol WhatsApp','Animasi scroll & efek hover','Setup metadata SEO','Integrasi Google Analytics','1 putaran revisi','Dukungan 14 hari pasca-peluncuran'] },
-        { tier:'Profesional', name:'Website Perusahaan', period:'pembayaran sekali · selesai 7–10 hari', btn:'Mulai Sekarang',
+        { tier:'Standar', name:'Landing Page', period:'pembayaran sekali · selesai 1-2 hari', btn:'Mulai Sekarang',
+          features:['1 halaman responsif penuh','Hingga 6 bagian custom','Formulir kontak + tombol WhatsApp','Animasi scroll & efek hover','Setup metadata SEO','1 putaran revisi','Dukungan 14 hari pasca-peluncuran'] },
+        { tier:'Profesional', name:'Website Bisnis', period:'pembayaran sekali · selesai 3–7 hari', btn:'Mulai Sekarang',
           features:['Hingga 8 halaman kustom penuh','CMS / panel admin untuk edit mudah','Animasi scroll lanjutan','Bagian blog atau berita','Widget chat WhatsApp','Google Analytics + Search Console','3 putaran revisi','Dukungan 30 hari pasca-peluncuran','Konsultasi domain + hosting'] },
         { tier:'Premium', name:'Platform Lengkap', period:'berdasarkan cakupan proyek', btn:'Hubungi Kami',
           features:['E-commerce / sistem pemesanan','Payment gateway (Midtrans, Xendit)','Backend & database kustom','Dashboard pengguna / portal member','Animasi 3D / WebGL lanjutan','Integrasi API','Revisi tak terbatas','Dukungan dedikasi 3 bulan','Pengiriman prioritas'] },
@@ -66,10 +66,10 @@ export const translations = {
       faqs: [
         { q:'Bagaimana cara memulai?', a:'Cukup kirim pesan ke WhatsApp kami atau isi formulir kontak. Kami akan jadwalkan panggilan discovery 30 menit gratis untuk memahami proyek Anda.' },
         { q:'Bagaimana cara pembayaran?', a:'Kami menerima transfer bank (BCA, Mandiri, BRI), GoPay, OVO, dan QRIS. DP 50% di awal, sisa 50% setelah persetujuan desain final.' },
-        { q:'Bisakah saya lihat mockup sebelum bayar?', a:'Ya! Kami menyediakan konsep desain / mockup setelah DP 50%. Jika tidak puas dengan konsep awal, kami akan merevisinya tanpa biaya tambahan.' },
+        { q:'Bisakah saya lihat mockup sebelum bayar?', a:'Kami menyediakan konsep desain / mockup setelah DP 50%. Jika tidak puas dengan konsep awal, kami akan merevisinya tanpa biaya tambahan.' },
         { q:'Bagaimana jika saya sudah punya domain dan hosting?', a:'Tidak masalah. Kami bisa deploy ke domain dan hosting Anda yang sudah ada.' },
         { q:'Bisakah saya update website sendiri setelah launch?', a:'Untuk paket Profesional dan Premium, ya — kami menyertakan CMS yang memungkinkan Anda memperbarui konten tanpa menyentuh kode.' },
-        { q:'Apakah Anda melayani klien di luar Jakarta?', a:'Tentu. Kami melayani klien di seluruh Indonesia dan mancanegara. Semua komunikasi via WhatsApp, Zoom, atau email.' },
+        { q:'Apakah Anda melayani klien di luar Jakarta?', a:'Kami melayani klien di seluruh Indonesia dan mancanegara. Semua komunikasi via WhatsApp, Zoom, atau email.' },
         { q:'Bagaimana jika butuh perubahan setelah situs live?', a:'Setiap paket mencakup dukungan 14–30 hari pasca-peluncuran. Setelahnya bisa berlangganan add-on Maintenance Bulanan.' },
       ],
       ctaSub1:'Masih bingung paket mana yang tepat?', ctaSub2:'Kami siap memberikan rekomendasi personal — gratis, tanpa kewajiban.', ctaBtn:'Tanya di WhatsApp',
@@ -89,7 +89,7 @@ export const translations = {
       waBtn:'Chat di WhatsApp — kami balas cepat!',
       orDivider:'atau kirim brief singkat',
       fields:{ name:'Nama Anda *', namePh:'Budi Santoso', email:'Email', emailPh:'hello@perusahaan.com', service:'Apa yang Anda butuhkan?', servicePh:'Pilih layanan…', budget:'Kisaran Anggaran', budgetPh:'Pilih kisaran…', message:'Ceritakan proyek Anda', messagePh:'Deskripsikan bisnis Anda, kebutuhan, inspirasi, timeline…' },
-      services:['Landing Page','Website Perusahaan (multi halaman)','Toko E-commerce','Sistem Booking / Reservasi','Website Portofolio','SaaS / App Landing Page','Redesign Website','Lainnya / Belum yakin'],
+      services:['Landing Page','Website Bisnis (multi halaman)','Toko E-commerce','Sistem Booking / Reservasi','Website Portofolio','SaaS / App Landing Page','Redesign Website','Lainnya / Belum yakin'],
       budgets:['Di bawah Rp 3jt','Rp 3jt – 8jt','Rp 8jt – 20jt','Di atas Rp 20jt','Belum yakin'],
       submitBtn:'Kirim via WhatsApp →',
       successTitle:'Pesan terkirim ke WhatsApp!', successSub:'Kami akan menghubungi Anda dalam 60 menit. Cek WhatsApp Anda sekarang.',
@@ -128,7 +128,7 @@ export const translations = {
     testi: { label: 'Testimonials', title: 'What clients say' },
     marqueeItems: ['Landing Pages','E-commerce Stores','Company Profiles','SaaS Platforms','Booking Systems','Restaurant Sites','Real Estate Portals','Portfolio Sites','Event Pages','Digital Marketing'],
     
-    cta: { label: 'Ready?', title1: 'Let\'s build something', title2: 'extraordinary.', sub: 'Drop us a message and we\'ll come back with a free strategy session and quote — usually within the hour.', btn1: 'Start a Project →', btn2: 'View Pricing' },
+    cta: { label: 'Ready?', title1: 'Let\'s build something', title2: 'extraordinary.', sub: 'Drop us a message and we\'ll come back with a free strategy session and quote — usually within the hour.', btn1: 'Start a Project →', btn2: 'View Pricing →' },
     work: {
       label: 'Portfolio', title1: 'Sites we\'ve', title2: 'built & launched',
       sub: 'Every project is designed from scratch — no templates, no shortcuts. Click any card to see the full demo.',
@@ -141,9 +141,9 @@ export const translations = {
       sub: 'All packages include mobile optimization, fast hosting setup, and 30-day post-launch support. No hidden fees. No surprises.',
       toggle1: 'Monthly Retainer', toggle2: 'Annual', save: 'Save 20%',
       plans: [
-        { tier:'Starter', name:'Landing Page', period:'one-time payment · delivered in 3–5 days', btn:'Get Started',
-          features:['1-page fully responsive design','Up to 6 custom sections','Contact form + WhatsApp button','Scroll animations & hover effects','SEO metadata setup','Google Analytics integration','1 round of revisions','14-day post-launch support'] },
-        { tier:'Professional', name:'Company Website', period:'one-time payment · delivered in 7–10 days', btn:'Get Started',
+        { tier:'Standard', name:'Landing Page', period:'one-time payment · delivered in 1–2 days', btn:'Get Started',
+          features:['1-page fully responsive design','Up to 6 custom sections','Contact form + WhatsApp button','Scroll animations & hover effects','SEO metadata setup','1 round of revisions','14-day post-launch support'] },
+        { tier:'Professional', name:'Business Website', period:'one-time payment · delivered in 3–7 days', btn:'Get Started',
           features:['Up to 8 fully custom pages','CMS / admin panel for easy edits','Advanced scroll animations','Blog or news section','WhatsApp chat widget','Google Analytics + Search Console','3 rounds of revisions','30-day post-launch support','Domain + hosting consultation'] },
         { tier:'Premium', name:'Full Platform', period:'based on project scope', btn:'Talk to Us',
           features:['E-commerce / booking system','Payment gateway (Midtrans, Xendit)','Custom backend & database','User dashboard / member portal','Advanced 3D / WebGL animations','API integrations','Unlimited revisions','3-month dedicated support','Priority delivery'] },
@@ -164,10 +164,10 @@ export const translations = {
       faqs: [
         { q:'How do I get started?', a:'Just drop us a message on WhatsApp or fill in the contact form. We\'ll schedule a free 30-minute discovery call to understand your project.' },
         { q:'How do I pay? What payment methods are accepted?', a:'We accept bank transfer (BCA, Mandiri, BRI), GoPay, OVO, and QRIS. 50% deposit upfront, 50% on final approval.' },
-        { q:'Can I see a mockup before paying?', a:'Yes! We provide a design concept after the 50% deposit. If not satisfied, we\'ll revise it at no extra cost.' },
+        { q:'Can I see a mockup before paying?', a:'We provide a design concept after the 50% deposit. If not satisfied, we\'ll revise it at no extra cost.' },
         { q:'What if I already have a domain and hosting?', a:'No problem. We can deploy to your existing domain and hosting.' },
         { q:'Will I be able to update the website myself after launch?', a:'For Professional and Premium packages, yes — we include a CMS to update content without touching code.' },
-        { q:'Do you work with clients outside Jakarta?', a:'Absolutely. We work with clients across Indonesia and internationally via WhatsApp, Zoom, or email.' },
+        { q:'Do you work with clients outside Jakarta?', a:'We work with clients across Indonesia and internationally via WhatsApp, Zoom, or email.' },
         { q:'What if I need changes after the site is live?', a:'Every package includes 14–30 days of post-launch support. After that, subscribe to our Monthly Maintenance add-on.' },
       ],
       ctaSub1:'Still unsure which package is right for you?', ctaSub2:'We\'re happy to give you a personalised recommendation — for free, with no obligation.', ctaBtn:'Ask Us on WhatsApp',

@@ -1,4 +1,4 @@
-const WA_NUMBER = '6281234567890'
+import { WA_NUMBER } from '../config.js'
 
 export default function WaFloat() {
   return (

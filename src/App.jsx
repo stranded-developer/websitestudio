@@ -7,11 +7,14 @@ import Home from './pages/Home.jsx'
 import Work from './pages/Work.jsx'
 import Pricing from './pages/Pricing.jsx'
 import Contact from './pages/Contact.jsx'
+import ScrollToTop from './components/ScrollToTop'
 
 export default function App() {
   return (
     <LangProvider>
       <BrowserRouter>
+      <IntroVideo />
+      <ScrollToTop />
         <Navbar />
         <div
           id="scroll-container"

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import useReveal from '../components/useReveal'
 import { useLang } from '../components/LangContext.jsx'
 
-const WA_NUMBER = '6281234567890'
+import { WA_NUMBER } from '../config.js'
 
 const TESTIMONIALS = [
   { stars:'★★★★★', quote:'"Our website transformed how clients see us. Leads doubled within the first month of launch."', initials:'AR', name:'Adi Ramadhan', role:'CEO, PT Karya Maju' },
@@ -81,9 +81,9 @@ function StatItem({ num, suffix, label }) {
 
 
 const STATS = [
-  { num: 1100, suffix: ' +' },
+  { num: 2500, suffix: ' +' },
   { num: 98,   suffix: ' %' },
-  { num: 9,    suffix: ' ×' },
+  { num: 18,    suffix: ' ×' },
   { num: 5,    suffix: ' ★' },
 ]
 
@@ -195,7 +195,7 @@ export default function Home() {
           <p className="hero-sub">{t.hero.sub}</p>
           <div className="hero-actions">
             <Link to="/work" className="btn-primary">{t.hero.cta1}</Link>
-            <a href={`https://wa.me/${WA_NUMBER}?text=Hi%20websitestudio.id!`} target="_blank" rel="noopener noreferrer" className="btn-ghost">{t.hero.cta2}</a>
+           <a href={`https://wa.me/${WA_NUMBER}?text=Hi%20websitestudio.id!`} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ background:'var(--whatsapp)', boxShadow:'none' }}>{t.hero.cta2}</a>
           </div>
           <div className="hero-stats">
             {STATS.map((stat, i) => (
@@ -245,7 +245,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="testimonials" style={{ background:'var(--bg2)', padding:'5rem 0', overflow:'hidden' }}>
+      <section id="testimonials" style={{ background:'var(--bg2)', padding:'0.5rem 0', overflow:'hidden' }}>
         <div className="page-section" style={{ paddingBottom:'2rem' }}>
           <span className="section-label" style={{ textAlign:'center', display:'block' }}>{t.testi.label}</span>
           <h2 className="section-title reveal" style={{ textAlign:'center' }}>{t.testi.title}</h2>
@@ -266,18 +266,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section style={{ padding:'5rem 1.5rem', textAlign:'center', position:'relative', overflow:'hidden' }}>
-        <div style={{ position:'absolute', inset:0, background:'radial-gradient(ellipse 60% 80% at 50% 50%,rgba(124,92,191,.1),transparent 70%)', pointerEvents:'none' }} />
-        <div style={{ position:'relative', zIndex:1, maxWidth:'600px', margin:'0 auto' }}>
-          <span className="section-label reveal" style={{ display:'block', textAlign:'center' }}>{t.cta.label}</span>
-          <h2 className="section-title reveal" style={{ fontSize:'clamp(1.8rem,5vw,3.5rem)' }}>{t.cta.title1} <span style={{ color:'var(--purple-light)' }}>{t.cta.title2}</span></h2>
-          <p className="section-sub reveal" style={{ margin:'0 auto 2rem', textAlign:'center' }}>{t.cta.sub}</p>
-          <div style={{ display:'flex', gap:'1rem', justifyContent:'center', flexWrap:'wrap' }} className="reveal reveal-d1">
-            <Link to="/contact" className="btn-primary">{t.cta.btn1}</Link>
-            <Link to="/pricing" className="btn-ghost">{t.cta.btn2}</Link>
-          </div>
-        </div>
-      </section>
+      <section id="contact" style={{ padding:'5rem 1.5rem', textAlign:'center', position:'relative', overflow:'hidden' }}>
+  <div style={{ position:'absolute', inset:0, background:'radial-gradient(ellipse 60% 80% at 50% 50%,rgba(124,92,191,.1),transparent 70%)', pointerEvents:'none' }} />
+  <div style={{ position:'relative', zIndex:1, maxWidth:'600px', margin:'0 auto' }}>
+    <span className="section-label reveal" style={{ display:'block', textAlign:'center' }}>{t.cta.label}</span>
+    <h2 className="section-title reveal" style={{ fontSize:'clamp(1.8rem,5vw,3.5rem)' }}>{t.cta.title1} <span style={{ color:'var(--purple-light)' }}>{t.cta.title2}</span></h2>
+    <p className="section-sub reveal" style={{ margin:'0 auto 2rem', textAlign:'center' }}>{t.cta.sub}</p>
+    <div style={{ display:'flex', gap:'1rem', justifyContent:'center', flexWrap:'wrap' }} className="reveal reveal-d1">
+      <a href={`https://wa.me/${WA_NUMBER}?text=Hi%20websitestudio.id!`} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ background:'var(--whatsapp)', boxShadow:'none' }}>{t.hero.cta2}</a>
+      <Link to="/pricing" className="btn-primary">{t.cta.btn2}</Link>
+    </div>
+  </div>
+</section>
     </>
   )
 }

@@ -8,15 +8,17 @@ export default function useReveal() {
     const check = () => {
       const threshold = getThreshold()
       const containerTop = container === window ? 0 : container.getBoundingClientRect().top
-
       document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
         const elTop = el.getBoundingClientRect().top - containerTop
         if (elTop < threshold) el.classList.add('visible')
       })
     }
 
+    // Reset all reveals then immediately re-check so visible ones snap back
+    document.querySelectorAll('.reveal').forEach(el => el.classList.remove('visible'))
+    setTimeout(check, 50)
+
     container.addEventListener('scroll', check, { passive: true })
-    setTimeout(check, 120)
     return () => container.removeEventListener('scroll', check)
-  }, [])
+  }) // <-- no dependency array = runs after every render including lang change
 }

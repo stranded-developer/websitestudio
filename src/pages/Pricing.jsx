@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom'
 import useReveal from '../components/useReveal'
 import { useLang } from '../components/LangContext.jsx'
 
-const WA_NUMBER = '6281234567890'
+import { WA_NUMBER } from '../config.js'
 const WA_MSGS = [
   'Hi!%20I%27m%20interested%20in%20the%20Landing%20Page%20package.',
   'Hi!%20I%27m%20interested%20in%20the%20Company%20Website%20package.',
   "Hi!%20I'm%20interested%20in%20a%20custom%20web%20platform.%20Let's%20talk!",
 ]
-const PRICES_MONTHLY = ['2,5jt','7,5jt','Custom']
-const PRICES_ANNUAL  = ['2jt','6jt','Custom']
+const PRICES_MONTHLY = ['500k','1,5jt','Custom']
+const PRICES_ANNUAL  = ['400jt','1.2jt','Custom']
 
 function CheckIcon() {
   return (
