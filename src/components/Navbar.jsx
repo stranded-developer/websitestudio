@@ -61,17 +61,18 @@ useEffect(() => {
           padding-left: 2rem;
           padding-right: 2rem;
           padding-bottom: 4px;
-          background: #08090d;
+          background: rgba(8,9,13,0.5);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
           border-bottom: 1px solid var(--border2);
           display: flex;
           align-items: flex-end;
           justify-content: flex-end;
-          gap: .5rem;
+          gap: .3rem;
           font-size: .72rem;
           color: var(--text3);
           letter-spacing: .06em;
           box-sizing: border-box;
-          /* height is driven by padding, not fixed — grows with safe area */
           min-height: calc(32px + env(safe-area-inset-top));
         }
 
@@ -146,12 +147,10 @@ useEffect(() => {
       `}</style>
 
       <div className="lang-bar">
-        <span style={{ marginRight: 'auto' }}>Bahasa / Language</span>
-        <span className="lang-sep">|</span>
-        <button className={`lang-btn${lang === 'ID' ? ' active' : ''}`} onClick={() => setLang('ID')}>ID</button>
-        <span className="lang-sep">/</span>
-        <button className={`lang-btn${lang === 'EN' ? ' active' : ''}`} onClick={() => setLang('EN')}>EN</button>
-      </div>
+  <button className={`lang-btn${lang === 'ID' ? ' active' : ''}`} onClick={() => setLang('ID')}>ID</button>
+  <span className="lang-sep">/</span>
+  <button className={`lang-btn${lang === 'EN' ? ' active' : ''}`} onClick={() => setLang('EN')}>EN</button>
+</div>
 
       <nav id="navbar" className={scrolled ? 'scrolled' : ''}>
         <Link to="/" style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.05rem', fontWeight: 700, letterSpacing: '-.02em', zIndex: 1001, position: 'relative', textDecoration: 'none', color: 'var(--text)' }}>
