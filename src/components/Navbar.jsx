@@ -42,7 +42,7 @@ useEffect(() => {
   const mobileLinks = [
     ['/', t.nav.home],
     ['/#about', t.about.label],
-    ['/#testimonials', t.testi.label],
+    
     ['/work', t.nav.work],
     ['/pricing', t.nav.pricing],
     ['/contact', t.nav.contact],
