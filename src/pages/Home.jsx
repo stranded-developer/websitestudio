@@ -73,15 +73,7 @@ function StatItem({ num, suffix, label }) {
   )
 }
 
-function StatItem({ num, suffix, label }) {
-  const { count, ref } = useCountUp(num)
-  return (
-    <div className="stat-item" ref={ref}>
-      <div className="stat-num">{count}<em>{suffix}</em></div>
-      <div className="stat-label">{label}</div>
-    </div>
-  )
-}
+
 
 const STATS = [
   { num: 1100, suffix: '+' },
