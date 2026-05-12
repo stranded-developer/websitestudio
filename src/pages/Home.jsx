@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import useReveal from '../components/useReveal'
 import { useLang } from '../components/LangContext.jsx'
@@ -14,6 +14,51 @@ const TESTIMONIALS = [
   { stars:'★★★★★', quote:'"Design quality on par with agencies that charge 10× more. Brief to launch in one week flat."', initials:'LH', name:'Linda Halim', role:'Marketing Dir., Griya Property' },
 ]
 
+function useCountUp(target, duration = 2000) {
+  const [count, setCount] = useState(0)
+  const ref = useRef(null)
+  const started = useRef(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !started.current) {
+        started.current = true
+        const startTime = performance.now()
+        const tick = (now) => {
+          const progress = Math.min((now - startTime) / duration, 1)
+          const eased = 1 - Math.pow(1 - progress, 3)
+          setCount(Math.floor(eased * target))
+          if (progress < 1) requestAnimationFrame(tick)
+          else setCount(target)
+        }
+        requestAnimationFrame(tick)
+      }
+    }, { threshold: 0.3 })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [target, duration])
+
+  return { count, ref }
+}
+
+function StatItem({ num, suffix, label }) {
+  const { count, ref } = useCountUp(num)
+  return (
+    <div className="stat-item" ref={ref}>
+      <div className="stat-num">{count}<em>{suffix}</em></div>
+      <div className="stat-label">{label}</div>
+    </div>
+  )
+}
+
+const STATS = [
+  { num: 1100, suffix: '+' },
+  { num: 98,   suffix: '%' },
+  { num: 4,    suffix: '×' },
+  { num: 5,    suffix: '★' },
+]
 
 export default function Home() {
   useReveal()
@@ -51,6 +96,7 @@ export default function Home() {
 
   const testiItems = [...TESTIMONIALS, ...TESTIMONIALS]
   const marqueeItems = [...t.marqueeItems, ...t.marqueeItems]
+
   return (
     <>
       <style>{`
@@ -108,7 +154,6 @@ export default function Home() {
       `}</style>
 
       <section id="home">
-        
         <div className="hero-bg">
           <canvas ref={canvasRef} id="particleCanvas" />
           <div className="hero-orb" />
@@ -126,15 +171,16 @@ export default function Home() {
             <a href={`https://wa.me/${WA_NUMBER}?text=Hi%20websitestudio.id!`} target="_blank" rel="noopener noreferrer" className="btn-ghost">{t.hero.cta2}</a>
           </div>
           <div className="hero-stats">
-            {t.hero.stats.map(([num, label]) => (
-              <div key={label} className="stat-item">
-                <div className="stat-num">{num}</div>
-                <div className="stat-label">{label}</div>
-              </div>
+            {STATS.map((stat, i) => (
+              <StatItem
+                key={i}
+                num={stat.num}
+                suffix={stat.suffix}
+                label={t.hero.stats[i][1]}
+              />
             ))}
           </div>
         </div>
-        
       </section>
 
       <div className="marquee-section">
