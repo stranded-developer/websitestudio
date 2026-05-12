@@ -13,16 +13,19 @@ export default function App() {
     <LangProvider>
       <BrowserRouter>
         <Navbar />
-        <div style={{
-          position: 'fixed',
-          top: 'calc(96px + env(safe-area-inset-top))',
-          left: 0,
-          right: 0,
-          bottom: 0,
-          overflowY: 'scroll',
-          WebkitOverflowScrolling: 'touch',
-          overscrollBehaviorY: 'none',
-        }}>
+        <div
+          id="scroll-container"
+          style={{
+            position: 'fixed',
+            top: 'calc(96px + env(safe-area-inset-top))',
+            left: 0,
+            right: 0,
+            bottom: 0,
+            overflowY: 'scroll',
+            WebkitOverflowScrolling: 'touch',
+            overscrollBehaviorY: 'none',
+          }}
+        >
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/work" element={<Work />} />

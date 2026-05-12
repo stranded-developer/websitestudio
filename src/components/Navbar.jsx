@@ -10,11 +10,14 @@ export default function Navbar() {
   const location = useLocation()
   const { lang, setLang, t } = useLang()
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  // Change this useEffect:
+useEffect(() => {
+  const el = document.getElementById('scroll-container')
+  if (!el) return
+  const onScroll = () => setScrolled(el.scrollTop > 30)
+  el.addEventListener('scroll', onScroll, { passive: true })
+  return () => el.removeEventListener('scroll', onScroll)
+}, [])
 
   useEffect(() => {
     setMenuOpen(false)

@@ -30,7 +30,7 @@ export default function Pricing() {
   return (
     <>
       <style>{`
-        .pricing-header { padding-top:calc(96px + env(safe-area-inset-top) + 4rem); padding-bottom:3rem; text-align:center; }
+        .pricing-header { padding-top:4rem; padding-bottom:3rem; text-align:center; }
         .billing-toggle { display:inline-flex; align-items:center; gap:1rem; background:var(--surface); border:1px solid var(--border2); border-radius:100px; padding:.4rem .6rem .4rem 1.2rem; margin-bottom:3.5rem; font-size:.85rem; color:var(--text2); cursor:pointer; user-select:none; }
         .toggle-track { position:relative; width:44px; height:24px; background:var(--surface2); border:1px solid var(--border2); border-radius:100px; transition:background .25s; flex-shrink:0; }
         .toggle-track.on { background:var(--purple); border-color:var(--purple); }
