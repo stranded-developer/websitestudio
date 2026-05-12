@@ -14,7 +14,6 @@ const TESTIMONIALS = [
   { stars:'★★★★★', quote:'"Design quality on par with agencies that charge 10× more. Brief to launch in one week flat."', initials:'LH', name:'Linda Halim', role:'Marketing Dir., Griya Property' },
 ]
 
-const MARQUEE_ITEMS = ['Landing Pages','E-commerce Stores','Company Profiles','SaaS Platforms','Booking Systems','Restaurant Sites','Real Estate Portals','Portfolio Sites','Event Pages','Digital Marketing']
 
 export default function Home() {
   useReveal()
@@ -51,8 +50,7 @@ export default function Home() {
   }, [])
 
   const testiItems = [...TESTIMONIALS, ...TESTIMONIALS]
-  const marqueeItems = [...MARQUEE_ITEMS, ...MARQUEE_ITEMS]
-
+  const marqueeItems = [...t.marqueeItems, ...t.marqueeItems]
   return (
     <>
       <style>{`
@@ -68,7 +66,7 @@ export default function Home() {
         @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
         h1.hero-title { font-family:'Outfit',sans-serif; font-size:clamp(2.4rem,6.5vw,5.8rem); font-weight:800; line-height:1.0; letter-spacing:-.04em; margin-bottom:1.5rem; animation:fadeUp .8s ease .4s both; }
         .hero-title .line { display:block; }
-        .hero-title .outline { color:transparent; -webkit-text-stroke:1.5px var(--purple-light); }
+        .hero-title .outline { color:var(--purple-light); }
         .hero-sub { font-size:clamp(.95rem,1.8vw,1.1rem); color:var(--text2); max-width:520px; margin:0 auto 2.5rem; line-height:1.8; animation:fadeUp .8s ease .6s both; }
         .hero-actions { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; animation:fadeUp .8s ease .8s both; }
         .hero-stats { display:flex; gap:3rem; justify-content:center; margin-top:4rem; padding-top:2.5rem; border-top:1px solid var(--border2); animation:fadeUp .8s ease 1s both; flex-wrap:wrap; }

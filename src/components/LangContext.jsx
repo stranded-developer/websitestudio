@@ -29,6 +29,7 @@ export const translations = {
       ],
     },
     testi: { label: 'Testimoni', title: 'Kata klien kami' },
+    marqueeItems: ['Landing Page','Toko E-commerce','Profil Perusahaan','Platform SaaS','Sistem Booking','Website Restoran','Portal Properti','Website Portofolio','Halaman Event','Digital Marketing'],
     cta: { label: 'Siap?', title1: 'Mari bangun sesuatu yang', title2: 'luar biasa.', sub: 'Kirim pesan dan kami akan kembali dengan sesi strategi gratis dan penawaran — biasanya dalam satu jam.', btn1: 'Mulai Proyek →', btn2: 'Lihat Harga' },
     work: {
       label: 'Portofolio', title1: 'Site yang sudah', title2: 'kami bangun & luncurkan',
@@ -122,6 +123,8 @@ export const translations = {
       ],
     },
     testi: { label: 'Testimonials', title: 'What clients say' },
+    marqueeItems: ['Landing Pages','E-commerce Stores','Company Profiles','SaaS Platforms','Booking Systems','Restaurant Sites','Real Estate Portals','Portfolio Sites','Event Pages','Digital Marketing'],
+    
     cta: { label: 'Ready?', title1: 'Let\'s build something', title2: 'extraordinary.', sub: 'Drop us a message and we\'ll come back with a free strategy session and quote — usually within the hour.', btn1: 'Start a Project →', btn2: 'View Pricing' },
     work: {
       label: 'Portfolio', title1: 'Sites we\'ve', title2: 'built & launched',
