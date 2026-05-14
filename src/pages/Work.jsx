@@ -6,15 +6,15 @@ import { useLang } from '../components/LangContext.jsx'
 const WA_NUMBER = '6281234567890'
 
 const PROJECTS = [
-  { category:'corporate', name:'Griya Nusantara Group', tags:['Parallax','Animation','Property','Corporate'], icon:'🏙️', desc:'Luxury real estate corporate site with immersive parallax scrolling, 3D property viewer, and an interactive project map.', featured:true },
-  { category:'ecommerce', name:'MODA Fashion Store', tags:['E-commerce','Cart','Animation','Fashion'], icon:'👗', desc:'Full-featured online boutique with animated product reveals, cart, and Midtrans checkout integration.' },
-  { category:'fnb', name:'Kopi Ritual Café', tags:['Restaurant','Booking','Menu','Animation'], icon:'☕', desc:'Animated café site with scroll-reveal menu, table reservation system, and live Instagram feed.' },
-  { category:'tech', name:'AnalytikPro Platform', tags:['SaaS','Dashboard','Data','Tech'], icon:'📊', desc:'SaaS landing page with live data demos, animated metrics, and multi-tier pricing section.' },
-  { category:'creative', name:'Studio Akar Portfolio', tags:['Portfolio','Creative','Cursor Effects','3D'], icon:'🎨', desc:'Award-winning creative portfolio with custom magnetic cursor, WebGL transitions, and immersive project reveals.' },
-  { category:'events', name:'Summit Nusantara 2025', tags:['Event','Countdown','Speakers','Registration'], icon:'🎤', desc:'Conference landing page with live countdown, speaker showcase, and Eventbrite ticket integration.' },
-  { category:'realestate', name:'Harsa Residence', tags:['Property','Gallery','VR Tour','Real Estate'], icon:'🏡', desc:'Premium residential project site with interactive floor plan, 360° virtual tour, and KPR calculator.' },
-  { category:'fnb', name:'Warung Pak Budi', tags:['Restaurant','Menu','Order','QR'], icon:'🍜', desc:'Online menu with QR ordering, GoFood / GrabFood deep links, and daily special announcements.' },
-  { category:'tech', name:'PayKu App Landing', tags:['Fintech','App','Landing','Conversion'], icon:'💳', desc:'High-converting fintech landing page with animated app mockups, user trust signals, and App Store deep links.' },
+  { category:'corporate', name:'Griya Nusantara Group', video:'/videos/griya-nusantara.mp4', tags:['Parallax','Animation','Property','Corporate'], icon:'🏙️', desc:'Luxury real estate corporate site with immersive parallax scrolling, 3D property viewer, and an interactive project map.', featured:true },
+  { category:'ecommerce', name:'MODA Fashion Store', video:'/videos/moda-fashion.mp4', tags:['E-commerce','Cart','Animation','Fashion'], icon:'👗', desc:'Full-featured online boutique with animated product reveals, cart, and Midtrans checkout integration.' },
+  { category:'fnb', name:'Kopi Ritual Café', video:'/videos/kopi-ritual.mp4', tags:['Restaurant','Booking','Menu','Animation'], icon:'☕', desc:'Animated café site with scroll-reveal menu, table reservation system, and live Instagram feed.' },
+  { category:'tech', name:'AnalytikPro Platform', video:'/videos/analytikpro.mp4', tags:['SaaS','Dashboard','Data','Tech'], icon:'📊', desc:'SaaS landing page with live data demos, animated metrics, and multi-tier pricing section.' },
+  { category:'creative', name:'Studio Akar Portfolio', video:'/videos/studio-akar.mp4', tags:['Portfolio','Creative','Cursor Effects','3D'], icon:'🎨', desc:'Award-winning creative portfolio with custom magnetic cursor, WebGL transitions, and immersive project reveals.' },
+  { category:'events', name:'Summit Nusantara 2025', video:'/videos/summit-nusantara.mp4', tags:['Event','Countdown','Speakers','Registration'], icon:'🎤', desc:'Conference landing page with live countdown, speaker showcase, and Eventbrite ticket integration.' },
+  { category:'realestate', name:'Harsa Residence', video:'/videos/harsa-residence.mp4', tags:['Property','Gallery','VR Tour','Real Estate'], icon:'🏡', desc:'Premium residential project site with interactive floor plan, 360° virtual tour, and KPR calculator.' },
+  { category:'fnb', name:'Warung Pak Budi', video:'/videos/warung-pak-budi.mp4', tags:['Restaurant','Menu','Order','QR'], icon:'🍜', desc:'Online menu with QR ordering, GoFood / GrabFood deep links, and daily special announcements.' },
+  { category:'tech', name:'PayKu App Landing', video:'/videos/payku.mp4', tags:['Fintech','App','Landing','Conversion'], icon:'💳', desc:'High-converting fintech landing page with animated app mockups, user trust signals, and App Store deep links.' },
 ]
 
 function Modal({ project, onClose, t }) {
@@ -29,10 +29,18 @@ function Modal({ project, onClose, t }) {
           <h2 style={{ fontFamily:"'Outfit',sans-serif",fontSize:'1.4rem',fontWeight:700 }}>{project.name}</h2>
         </div>
         <div style={{ width:'100%',aspectRatio:'16/9',background:'var(--bg3)',borderRadius:'14px',overflow:'hidden',display:'flex',alignItems:'center',justifyContent:'center' }}>
-          <div style={{ textAlign:'center',padding:'3rem',color:'var(--text3)' }}>
-            <div style={{ fontSize:'3.5rem',marginBottom:'1rem' }}>🎬</div>
-            <p style={{ fontSize:'.875rem',lineHeight:1.6 }}>{t.work.upload}</p>
-          </div>
+          {project.video
+            ? <video
+                src={project.video}
+                controls
+                autoPlay
+                style={{ width:'100%',height:'100%',objectFit:'cover' }}
+              />
+            : <div style={{ textAlign:'center',padding:'3rem',color:'var(--text3)' }}>
+                <div style={{ fontSize:'3.5rem',marginBottom:'1rem' }}>🎬</div>
+                <p style={{ fontSize:'.875rem',lineHeight:1.6 }}>{t.work.upload}</p>
+              </div>
+          }
         </div>
         <div style={{ marginTop:'1.2rem',display:'flex',alignItems:'center',justifyContent:'space-between',flexWrap:'wrap',gap:'1rem' }}>
           <div style={{ display:'flex',gap:'.5rem',flexWrap:'wrap' }}>
@@ -98,10 +106,20 @@ export default function Work() {
           {visible.map((p, i) => (
             <article key={p.name} className={`work-card reveal${p.featured ? ' featured' : ''} reveal-d${(i % 3) + 1}`} onClick={() => setModal(p)}>
               <div className={`card-thumb${p.featured ? ' featured-thumb' : ''}`}>
-                <div className="thumb-placeholder">
-                  <div className="thumb-icon">{p.icon}</div>
-                  <span className="thumb-label">{t.work.upload}</span>
-                </div>
+                {p.video
+                  ? <video
+                      src={p.video}
+                      muted
+                      autoPlay
+                      loop
+                      playsInline
+                      style={{ width:'100%',height:'100%',objectFit:'cover' }}
+                    />
+                  : <div className="thumb-placeholder">
+                      <div className="thumb-icon">{p.icon}</div>
+                      <span className="thumb-label">{t.work.upload}</span>
+                    </div>
+                }
                 <div className="card-overlay">
                   <div className="overlay-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg></div>
                 </div>
@@ -116,17 +134,17 @@ export default function Work() {
         </div>
 
         <div className="reveal" style={{ textAlign:'center', marginTop:'4rem', paddingTop:'4rem', borderTop:'1px solid var(--border2)' }}>
-  <p style={{ color:'var(--text2)', marginBottom:'1.5rem', fontSize:'1.05rem' }}>{t.work.cta}</p>
-  <a
-    href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Hi websitestudio.id! 👋 Saya melihat portofolio kalian dan ingin diskusi proyek.')}`}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="btn-primary"
-    style={{ background:'var(--whatsapp)' }}
-  >
-    {t.work.btn2}
-  </a>
-</div>
+          <p style={{ color:'var(--text2)', marginBottom:'1.5rem', fontSize:'1.05rem' }}>{t.work.cta}</p>
+          <a
+            href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Hi websitestudio.id! 👋 Saya melihat portofolio kalian dan ingin diskusi proyek.')}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary"
+            style={{ background:'var(--whatsapp)' }}
+          >
+            {t.work.btn2}
+          </a>
+        </div>
       </div>
 
       <Modal project={modal} onClose={() => setModal(null)} t={t} />
