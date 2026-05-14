@@ -14,7 +14,7 @@ export default function App() {
   return (
     <LangProvider>
       <BrowserRouter>
-      <IntroVideo />
+      {/* <IntroVideo /> */}
       <ScrollToTop />
         <Navbar />
         <div
