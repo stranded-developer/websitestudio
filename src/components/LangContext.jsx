@@ -37,6 +37,81 @@ export const translations = {
       filters: [['all','Semua'],['ecommerce','E-commerce'],['corporate','Korporat'],['fnb','F&B'],['tech','Tech / SaaS'],['creative','Kreatif'],['events','Event'],['realestate','Properti']],
       cta: 'Punya proyek? Ayo ngobrol.', btn1: 'Mulai Proyek →', btn2: '💬 Chat di WhatsApp',
       modalBtn: 'Mulai Proyek Serupa →', upload: 'Upload screen recording di sini',
+      projects: [
+        {
+          category: 'corporate',
+          name: 'Kitsune Antiques',
+          video: '/videos/kitsune.mp4',
+          tags: ['Antik','3D Animasi','Premium','Jepang'],
+          icon: '🦊',
+          desc: 'Toko antik premium dengan pengalaman 3D yang imersif — menampilkan koleksi barang antik langka dari seluruh dunia, dengan fokus pada keindahan dan keahlian tradisional Jepang.',
+          featured: true,
+        },
+        {
+          category: 'ecommerce',
+          name: 'MODA Fashion Store',
+          video: '/videos/moda-fashion.mp4',
+          tags: ['E-commerce','Keranjang','Animasi','Fashion'],
+          icon: '👗',
+          desc: 'Butik online lengkap dengan animasi peluncuran produk, keranjang belanja, dan integrasi checkout Midtrans.',
+        },
+        {
+          category: 'fnb',
+          name: 'Kopi Ritual Café',
+          video: '/videos/kopi-ritual.mp4',
+          tags: ['Restoran','Reservasi','Menu','Animasi'],
+          icon: '☕',
+          desc: 'Situs kafe animasi dengan menu scroll-reveal, sistem reservasi meja, dan feed Instagram langsung.',
+        },
+        {
+          category: 'tech',
+          name: 'Animate Engine',
+          video: '/videos/animate-engine.mp4',
+          tags: ['Studio Animasi','Spring API','SVG','Scroll Observer'],
+          icon: '🎞️',
+          desc: 'Landing page untuk studio animasi mutakhir — menampilkan API spring fisika, elemen draggable, SVG toolset canggih, scroll observer presisi tinggi, dan sistem timing yang berjalan seperti mesin jam. Teknologi animasi terdepan di industri.',
+        },
+        {
+          category: 'creative',
+          name: 'Studio Akar Portfolio',
+          video: '/videos/studio-akar.mp4',
+          tags: ['Portofolio','Kreatif','Cursor Effects','3D'],
+          icon: '🎨',
+          desc: 'Portofolio kreatif dengan kursor magnetik kustom, transisi WebGL, dan tampilan proyek imersif.',
+        },
+        {
+          category: 'events',
+          name: 'Relats Automotive',
+          video: '/videos/relats-automotive.mp4',
+          tags: ['Otomotif','Manufaktur','Industri','Global'],
+          icon: '⚙️',
+          desc: 'Situs korporat bertenaga tinggi untuk pemimpin global dalam solusi pelapis tekstil teknis — menampilkan lini produk insulasi termal, reduksi kebisingan, dan keselamatan dengan animasi industri yang memukau.',
+        },
+        {
+          category: 'realestate',
+          name: 'Harsa Residence',
+          video: '/videos/harsa-residence.mp4',
+          tags: ['Properti','Galeri','VR Tour','Real Estate'],
+          icon: '🏡',
+          desc: 'Situs proyek residensial premium dengan denah lantai interaktif, tur virtual 360°, dan kalkulator KPR.',
+        },
+        {
+          category: 'fnb',
+          name: 'Warung Pak Budi',
+          video: '/videos/warung-pak-budi.mp4',
+          tags: ['Restoran','Menu','Order','QR'],
+          icon: '🍜',
+          desc: 'Menu online dengan pemesanan QR, deep link GoFood / GrabFood, dan pengumuman spesial harian.',
+        },
+        {
+          category: 'tech',
+          name: 'PayKu App Landing',
+          video: '/videos/payku.mp4',
+          tags: ['Fintech','App','Landing','Konversi'],
+          icon: '💳',
+          desc: 'Landing page fintech konversi tinggi dengan mockup app animasi, sinyal kepercayaan pengguna, dan deep link App Store.',
+        },
+      ],
     },
     pricing: {
       label: 'Harga', title: 'Harga yang simpel dan jujur.',
@@ -96,11 +171,12 @@ export const translations = {
       locationLabel:'Jakarta, Indonesia · Sen–Sab 09.00–21.00 WIB',
       intro:'Baik punya brief yang jelas atau hanya ide kasar — kami ingin mendengarnya. Kebanyakan pertanyaan mendapat balasan dalam 60 menit saat jam kerja.',
     },
-    footer: { 
-    line1: '© 2026 websitestudio.id',
-    line2: 'Hak cipta dilindungi · Jakarta, Indonesia'
+    footer: {
+      line1: '© 2026 websitestudio.id',
+      line2: 'Hak cipta dilindungi · Jakarta, Indonesia'
     },
   },
+
   EN: {
     nav: { home: 'Home', work: 'Work', pricing: 'Pricing', contact: 'Contact', quote: 'Get a Quote →' },
     hero: {
@@ -127,7 +203,6 @@ export const translations = {
     },
     testi: { label: 'Testimonials', title: 'What clients say' },
     marqueeItems: ['Landing Pages','E-commerce Stores','Company Profiles','SaaS Platforms','Booking Systems','Restaurant Sites','Real Estate Portals','Portfolio Sites','Event Pages','Digital Marketing'],
-    
     cta: { label: 'Ready?', title1: 'Let\'s build something', title2: 'extraordinary.', sub: 'Drop us a message and we\'ll come back with a free strategy session and quote — usually within the hour.', btn1: 'Start a Project →', btn2: 'View Pricing →' },
     work: {
       label: 'Portfolio', title1: 'Sites we\'ve', title2: 'built & launched',
@@ -135,6 +210,81 @@ export const translations = {
       filters: [['all','All'],['ecommerce','E-commerce'],['corporate','Corporate'],['fnb','F&B'],['tech','Tech / SaaS'],['creative','Creative'],['events','Events'],['realestate','Real Estate']],
       cta: 'Have a project in mind? Let\'s talk.', btn1: 'Start a Project →', btn2: '💬 Chat on WhatsApp',
       modalBtn: 'Start a Similar Project →', upload: 'Upload your screen recording here',
+      projects: [
+        {
+          category: 'corporate',
+          name: 'Kitsune Antiques',
+          video: '/videos/kitsune.mp4',
+          tags: ['Antiques','3D Animation','Premium','Japan'],
+          icon: '🦊',
+          desc: 'A premium antique destination with an immersive 3D experience — showcasing rare collectibles sourced from across the globe, with a deep focus on the beauty and craftsmanship of traditional Japanese antiquity.',
+          featured: true,
+        },
+        {
+          category: 'ecommerce',
+          name: 'MODA Fashion Store',
+          video: '/videos/moda-fashion.mp4',
+          tags: ['E-commerce','Cart','Animation','Fashion'],
+          icon: '👗',
+          desc: 'Full-featured online boutique with animated product reveals, cart, and Midtrans checkout integration.',
+        },
+        {
+          category: 'fnb',
+          name: 'Kopi Ritual Café',
+          video: '/videos/kopi-ritual.mp4',
+          tags: ['Restaurant','Booking','Menu','Animation'],
+          icon: '☕',
+          desc: 'Animated café site with scroll-reveal menu, table reservation system, and live Instagram feed.',
+        },
+        {
+          category: 'tech',
+          name: 'Animate Engine',
+          video: '/videos/animate-engine.mp4',
+          tags: ['Animation Studio','Spring API','SVG','Scroll Observer'],
+          icon: '🎞️',
+          desc: 'Landing page for a cutting-edge animation studio — showcasing an intuitive physics-based spring API, fully draggable elements, a powerful SVG toolset, precision scroll observer, and timing that runs like clockwork. The frontier of the animation industry.',
+        },
+        {
+          category: 'creative',
+          name: 'Studio Akar Portfolio',
+          video: '/videos/studio-akar.mp4',
+          tags: ['Portfolio','Creative','Cursor Effects','3D'],
+          icon: '🎨',
+          desc: 'Award-winning creative portfolio with custom magnetic cursor, WebGL transitions, and immersive project reveals.',
+        },
+        {
+          category: 'events',
+          name: 'Relats Automotive',
+          video: '/videos/relats-automotive.mp4',
+          tags: ['Automotive','Manufacturing','Industrial','Global'],
+          icon: '⚙️',
+          desc: 'A high-octane corporate site for a global leader in technical textile coating solutions — showcasing cutting-edge product lines for thermal insulation, noise reduction, and safety with bold industrial animations.',
+        },
+        {
+          category: 'realestate',
+          name: 'Harsa Residence',
+          video: '/videos/harsa-residence.mp4',
+          tags: ['Property','Gallery','VR Tour','Real Estate'],
+          icon: '🏡',
+          desc: 'Premium residential project site with interactive floor plan, 360° virtual tour, and KPR calculator.',
+        },
+        {
+          category: 'fnb',
+          name: 'Warung Pak Budi',
+          video: '/videos/warung-pak-budi.mp4',
+          tags: ['Restaurant','Menu','Order','QR'],
+          icon: '🍜',
+          desc: 'Online menu with QR ordering, GoFood / GrabFood deep links, and daily special announcements.',
+        },
+        {
+          category: 'tech',
+          name: 'PayKu App Landing',
+          video: '/videos/payku.mp4',
+          tags: ['Fintech','App','Landing','Conversion'],
+          icon: '💳',
+          desc: 'High-converting fintech landing page with animated app mockups, user trust signals, and App Store deep links.',
+        },
+      ],
     },
     pricing: {
       label: 'Pricing', title: 'Simple, honest pricing.',
@@ -194,12 +344,10 @@ export const translations = {
       locationLabel:'Jakarta, Indonesia · Mon–Sat 09.00–21.00 WIB',
       intro:'Whether you have a clear brief or just a rough idea — we\'d love to hear from you. Most enquiries get a reply within 60 minutes during business hours.',
     },
-
-    footer: { 
-    line1: '© 2026 websitestudio.id',
-    line2: 'All rights reserved · Jakarta, Indonesia'
+    footer: {
+      line1: '© 2026 websitestudio.id',
+      line2: 'All rights reserved · Jakarta, Indonesia'
     },
-    
   },
 }
 

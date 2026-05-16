@@ -5,18 +5,6 @@ import { useLang } from '../components/LangContext.jsx'
 
 const WA_NUMBER = '6281234567890'
 
-const PROJECTS = [
-  { category:'corporate', name:'Griya Nusantara Group', video:'/videos/griya-nusantara.mp4', tags:['Parallax','Animation','Property','Corporate'], icon:'🏙️', desc:'Luxury real estate corporate site with immersive parallax scrolling, 3D property viewer, and an interactive project map.', featured:true },
-  { category:'ecommerce', name:'MODA Fashion Store', video:'/videos/moda-fashion.mp4', tags:['E-commerce','Cart','Animation','Fashion'], icon:'👗', desc:'Full-featured online boutique with animated product reveals, cart, and Midtrans checkout integration.' },
-  { category:'fnb', name:'Kopi Ritual Café', video:'/videos/kopi-ritual.mp4', tags:['Restaurant','Booking','Menu','Animation'], icon:'☕', desc:'Animated café site with scroll-reveal menu, table reservation system, and live Instagram feed.' },
-  { category:'tech', name:'AnalytikPro Platform', video:'/videos/analytikpro.mp4', tags:['SaaS','Dashboard','Data','Tech'], icon:'📊', desc:'SaaS landing page with live data demos, animated metrics, and multi-tier pricing section.' },
-  { category:'creative', name:'Studio Akar Portfolio', video:'/videos/studio-akar.mp4', tags:['Portfolio','Creative','Cursor Effects','3D'], icon:'🎨', desc:'Award-winning creative portfolio with custom magnetic cursor, WebGL transitions, and immersive project reveals.' },
-  { category:'events', name:'Summit Nusantara 2025', video:'/videos/summit-nusantara.mp4', tags:['Event','Countdown','Speakers','Registration'], icon:'🎤', desc:'Conference landing page with live countdown, speaker showcase, and Eventbrite ticket integration.' },
-  { category:'realestate', name:'Harsa Residence', video:'/videos/harsa-residence.mp4', tags:['Property','Gallery','VR Tour','Real Estate'], icon:'🏡', desc:'Premium residential project site with interactive floor plan, 360° virtual tour, and KPR calculator.' },
-  { category:'fnb', name:'Warung Pak Budi', video:'/videos/warung-pak-budi.mp4', tags:['Restaurant','Menu','Order','QR'], icon:'🍜', desc:'Online menu with QR ordering, GoFood / GrabFood deep links, and daily special announcements.' },
-  { category:'tech', name:'PayKu App Landing', video:'/videos/payku.mp4', tags:['Fintech','App','Landing','Conversion'], icon:'💳', desc:'High-converting fintech landing page with animated app mockups, user trust signals, and App Store deep links.' },
-]
-
 function Modal({ project, onClose, t }) {
   if (!project) return null
   return (
@@ -58,7 +46,8 @@ export default function Work() {
   const { t } = useLang()
   const [filter, setFilter] = useState('all')
   const [modal, setModal] = useState(null)
-  const visible = PROJECTS.filter(p => filter === 'all' || p.category === filter)
+
+  const visible = t.work.projects.filter(p => filter === 'all' || p.category === filter)
 
   return (
     <>
